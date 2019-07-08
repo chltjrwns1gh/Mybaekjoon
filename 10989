@@ -1,0 +1,10 @@
+import sys
+casenum = int(sys.stdin.readline())
+# 8MB
+# 10000 int = 10000 * 32bit = 10000 * 8byte = 80kb
+arr = [0 for i in range(10000)]
+for i in range(casenum):
+    arr[int(sys.stdin.readline()) - 1] += 1
+for i in range(10000):
+    for j in range(arr[i]):
+        print(i+1)

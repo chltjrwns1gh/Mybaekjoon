@@ -1,0 +1,16 @@
+import sys
+input = sys.stdin.readline
+n,m = input().split(" ")
+n,m = int(n),int(m)
+card = input().split(" ")
+for i in range(len(card)):
+    card[i] = int(card[i])
+card.sort(reverse = True)
+max = 0
+for i in range(0,n):
+    for j in range(i+1,n):
+        for k in range(j+1,n):
+            if max < card[i]+card[j]+card[k] and card[i]+card[j]+card[k]<=m:
+                # print(card[i],card[j],card[k])
+                max = card[i]+card[j]+card[k]
+print(max)

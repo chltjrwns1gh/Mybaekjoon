@@ -1,0 +1,53 @@
+import sys
+input = sys.stdin.readline
+casenum = int(input())
+arr = [0 for i in range(8001)]
+testcase = []
+max = -4001
+min = 4001
+maxnum = 0
+sum = 0
+for i in range(casenum):
+    temp = int(input())
+    sum += temp
+    arr[temp+4000] += 1
+    if max < temp:
+        max = temp
+    if min > temp:
+        min = temp
+    if maxnum < arr[temp+4000]:
+        maxnum = arr[temp+4000]
+    # print("maxnum = %d"%(maxnum))
+
+# print("mean = ",end = '')
+print(int(round(sum/casenum)))
+
+# print("middle num = ",end = '')
+midindex = (casenum+1)//2
+sum_index_for_mid = 0
+# print("midindex = %d"%(midindex))
+for i in range(8001):
+    sum_index_for_mid += arr[i]
+    if sum_index_for_mid >= midindex :
+        # print("sum_index_for_mid (%d) >= midindex"%(sum_index_for_mid))
+        midnum = i-4000
+        print(midnum)
+        break
+
+# print("most num = ",end = '')
+flag = 0
+for i in range(8001):
+    if maxnum == arr[i]:
+        if flag == 1:
+            # print("flag = 2\nprint(%d)"%(i-4000))
+            print(i-4000)
+            flag = 2
+            break
+        # print("flag = 1\nmostnum = %d"%(i-4000))
+        flag = 1
+        mostnum = i-4000
+if flag == 1:
+    print(mostnum)
+
+# print("range = ",end = '')
+print(max - min)

@@ -1,0 +1,9 @@
+inputtxt = input()
+abdial = [['A','B','C'],['D','E','F'],['G','H','I'],['J','K','L'],['M','N','O'],['P','Q','R','S'],['T','U','V'],['W','X','Y','Z']]
+# ABC -> 2 ,,,,,WXYZ -> 9
+time = 0
+for i in inputtxt:
+    for j in range(8):
+        if i in abdial[j]:
+            time += j+2+1
+print(time)

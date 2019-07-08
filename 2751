@@ -1,0 +1,7 @@
+testcasenum = int(input())
+testcase = []
+for i in range(testcasenum):
+    testcase.append(int(input()))
+testcase.sort()
+for i in testcase:
+    print(i)

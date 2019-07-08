@@ -1,0 +1,3 @@
+import random
+a = ['Korea','Yonsei']
+print(random.choice(a))

@@ -1,0 +1,9 @@
+testinput = []
+for i in range(5):
+    testinput.append(int(input()))
+    if testinput[i]<40:
+        testinput[i] = 40
+inputsum = 0
+for i in range(5):
+    inputsum += testinput[i]
+print(int(inputsum/5))

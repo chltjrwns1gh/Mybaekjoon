@@ -1,0 +1,14 @@
+def sum(a):
+    a = str(a)
+    b = 0
+    for i in a:
+        b+=int(i)
+    return b
+def self_num(a):
+    return a+sum(a)
+creator = []
+for i in range(1,10001):
+    creator.append(self_num(i))
+for i in range(1,10001):
+    if i not in creator:
+        print(i)

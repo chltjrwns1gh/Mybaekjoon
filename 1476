@@ -1,0 +1,20 @@
+def next(arr):
+    arr[0] += 1
+    arr[1] += 1
+    arr[2] += 1
+    if arr[0] == 16:
+        arr[0] = 1
+    if arr[1] == 29:
+        arr[1] = 1
+    if arr[2] == 20:
+        arr[2] = 1
+    return arr
+year_given = list(input().split(" "))
+for i in range(len(year_given)):
+    year_given[i] = int(year_given[i])
+year = 1
+year_made = [1,1,1]
+while year_given != year_made:
+    year += 1
+    year_made = next(year_made)
+print(year)

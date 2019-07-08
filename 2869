@@ -1,0 +1,7 @@
+a,b,v = input().split(" ")
+a,b,v = int(a),int(b),int(v)
+k = (v-b)/(a-b)
+if k == int(k):
+    print(int(k))
+else:
+    print(int(k)+1)

@@ -1,0 +1,15 @@
+def check(num):
+    str_num = str(num)
+    for i in range(len(str_num)-2):
+        if str_num[i]=='6' and str_num[i+1] == '6' and str_num[i+2] == '6':
+            return True
+    return False
+a = int(input())
+case = []
+i = 666
+
+while len(case) < a:
+    if check(i) == True:
+        case.append(i)
+    i += 1
+print(case[-1])

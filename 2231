@@ -1,0 +1,16 @@
+def solve(prob):
+    txt = str(prob)
+    sum = 0
+    for i in txt:
+        sum += int(i)
+    return sum
+a = int(input())
+ans = []
+for i in range(1,1000001):
+    if i+solve(i) == a:
+        ans.append(i)
+        break
+if len(ans) == 0:
+    print(0)
+else:
+    print(ans[0])

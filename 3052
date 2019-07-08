@@ -1,0 +1,6 @@
+testcase = []
+for i in range(10):
+    a = int(input())
+    testcase.append(a%42)
+testcase = list(set(testcase))
+print(len(testcase))

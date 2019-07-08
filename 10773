@@ -1,0 +1,13 @@
+a = int(input())
+case = []
+for i in range(a):
+    tmp = int(input())
+    if tmp == 0:
+        case.pop()
+        continue
+    else:
+        case.append(tmp)
+sum = 0
+for i in case:
+    sum += i
+print(sum)

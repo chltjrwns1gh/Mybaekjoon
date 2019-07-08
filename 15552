@@ -1,0 +1,10 @@
+import sys
+a = int(sys.stdin.readline().rstrip())
+result = []
+for i in range(a):
+    x,y = sys.stdin.readline().rstrip().split(' ')
+    x,y = int(x),int(y)
+    result.append(x+y)
+for i in result:
+    print(i)
+

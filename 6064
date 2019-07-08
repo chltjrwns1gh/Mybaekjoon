@@ -1,0 +1,26 @@
+casenum = int(input())
+testcase = []
+for i in range(casenum):
+    temp = input().split(' ')
+    for j in range(4):
+        temp[j] = int(temp[j])
+    testcase.append(temp)
+
+for i in testcase:
+    # i = [M, N, x, y]
+    if i[0]==i[1]:
+        if i[2]==i[3]:
+            print(i[2])
+        else:
+            print(-1)
+    else:
+        flag = 0
+        for j in range(i[1]):
+            #print("checking (%d, %d)"%(i[2],i[2] + j*i[1]))
+            if (i[2]-1+(j*i[0]))%i[1] == i[3]-1:
+            # if (x-1 + aM) % N == y-1 or not
+                flag = 1
+                print(i[2]+ j*i[0])
+                break
+        if flag == 0:
+            print(-1)

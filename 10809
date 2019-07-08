@@ -1,0 +1,6 @@
+abarr = [-1 for i in range(26)]
+strinput = input()
+for i in range(26):
+    abarr[i] = strinput.find(chr(i+ord('a')))
+for i in abarr:
+    print(i)

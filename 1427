@@ -1,0 +1,7 @@
+import sys
+input = sys.stdin.readline
+inputnum = list(input().strip())
+
+inputnum.sort(reverse = True)
+for i in inputnum:
+    print(i,end = '')

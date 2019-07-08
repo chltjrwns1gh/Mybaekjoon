@@ -1,0 +1,15 @@
+import sys
+input = sys.stdin.readline
+testcase = []
+a = input()
+result = []
+while True:
+    if a == '':
+        break
+    a = a.strip().split(" ")
+    a = int(a[0]),int(a[1])
+    result.append(a[0]+a[1])
+    a = input()
+
+for i in result:
+    print(i)

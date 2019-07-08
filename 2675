@@ -1,0 +1,11 @@
+testcasenum = int(input())
+testinput = []
+for i in range(testcasenum):
+    testinput.append(input().split(' '))
+for i in range(testcasenum):
+    repeatnum = int(testinput[i][0])
+    strinput = testinput[i][1]
+    for j in range(len(strinput)):
+        for k in range(repeatnum):
+            print(strinput[j],end = '')
+    print()

@@ -1,0 +1,21 @@
+import sys
+input = sys.stdin.readline
+fibo = []
+casenum = int(input())
+arr = [[0,0] for i in range(41)]
+arr[0][0] = 1
+arr[1][0] = 0
+arr[1][1] = 1
+case = []
+max = 0
+for i in range(casenum):
+    tmp = int(input())
+    if max < tmp:
+        max = tmp
+    case.append(tmp)
+for i in range(2,max+1):
+    arr[i][0] = arr[i-1][0]+arr[i-2][0]
+    arr[i][1] = arr[i-1][1]+arr[i-2][1]
+for i in case:
+    print(arr[i][0],end = ' ')
+    print(arr[i][1])

@@ -1,0 +1,17 @@
+casenum = int(input())
+testinput = []
+for i in range(casenum):
+    temp = input().split(' ')
+    for j in range(len(temp)):
+        temp[j] = int(temp[j])
+    testinput.append(temp)
+for i in testinput:
+    # i[0] = H
+    # i[1] = W
+    # i[2] = N
+    if i[2]%i[0] == 0:
+        print(i[0],end = '')
+        print("%02d" % (int(i[2] / i[0])))
+    else:
+        print(i[2]%i[0],end = '')
+        print("%02d"%(int(i[2]/i[0]) +1))

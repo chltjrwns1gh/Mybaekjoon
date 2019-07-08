@@ -1,0 +1,16 @@
+testcase = []
+a = input().split(" ")
+while a != ['0','0','0']:
+    testcase.append(a)
+    a=input().split(" ")
+for i in testcase:
+    if int(i[0])**2 + int(i[1])**2 == int(i[2])**2:
+        print("right")
+        continue
+    if int(i[0])**2 + int(i[2])**2 == int(i[1])**2:
+        print("right")
+        continue
+    if int(i[2])**2 + int(i[1])**2 == int(i[0])**2:
+        print("right")
+        continue
+    print("wrong")

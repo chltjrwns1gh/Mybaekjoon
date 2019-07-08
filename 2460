@@ -1,0 +1,8 @@
+man = 0
+ans = []
+for i in range(10):
+    tmp = list(map(int,input().split(" ")))
+    ans.append(man-tmp[0]+tmp[1])
+    man += (-tmp[0]+tmp[1])
+ans.sort()
+print(ans[-1])

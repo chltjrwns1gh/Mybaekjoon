@@ -1,0 +1,65 @@
+//THIS CODE IS WRITTEN BY C++
+#include <iostream>
+#include <cstdio>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+using namespace std;
+
+int main(void)
+{
+    int n,i,mx,my,you_scissors=0,you_paper=0,you_rock=0;
+    int paper_win=0;
+    int rock_win=0;
+    int scissors_win=0;
+    int mine[1000]={0},yours[1000]={0};
+    srand(time(NULL));
+
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+        scanf("%d %d",&mine[i],&yours[i]);
+
+    if(n<=3)
+    {
+        printf("%d",rand()%3);
+    }
+    else
+    {
+        for(i=0;i<n;i++)
+        {
+            //가위는 0, 바위는 1, 보는 2이다.
+            if(mine[i]==0&&yours[i]==2) scissors_win++;
+            if(mine[i]==1&&yours[i]==0) rock_win++;
+            if(mine[i]==2&&yours[i]==1) paper_win++;
+            if(yours[i]==0) you_scissors++;
+            else if(yours[i]==1)    you_rock++;
+            else    you_paper++;
+        }
+        mx=paper_win;
+        for(i=0;i<3;i++)
+        {
+            if(mx<(scissors_win))  mx=scissors_win;
+            if(mx<(rock_win))  mx=rock_win;
+        }
+        my=you_paper;
+        for(i=0;i<3;i++)
+        {
+            if(my<(scissors_win))  my=scissors_win;
+            if(my<(rock_win))  my=rock_win;
+        }
+        if(my>mx)
+        {
+
+            if(my==(you_rock))  printf("2");
+            else if(my==(you_paper))     printf("0");
+            else if(my==(you_scissors))      printf("1");
+        }
+        else
+        {
+            if(mx==(rock_win))  printf("1");
+            else if(mx==(paper_win))     printf("2");
+            else if(mx==(scissors_win))      printf("0");
+        }
+    }
+    return 0;
+}

@@ -1,0 +1,4 @@
+inputtxt = input().split(' ')
+for i in range(len(inputtxt)):
+    inputtxt[i] = inputtxt[i][2] + inputtxt[i][1] + inputtxt[i][0]
+print(inputtxt[0] if inputtxt[0]>inputtxt[1] else inputtxt[1])

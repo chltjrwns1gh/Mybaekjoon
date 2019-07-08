@@ -1,0 +1,15 @@
+intinput = int(input())
+flag = 0 #only 0 when start
+roomcnt = 0
+rmnumcnt = 1
+while(intinput>0):
+    if flag==0:
+        intinput -= rmnumcnt
+        rmnumcnt += 5
+        flag = 1
+        roomcnt += 1
+    else:
+        roomcnt += 1
+        intinput -= rmnumcnt
+        rmnumcnt += 6
+print(roomcnt)

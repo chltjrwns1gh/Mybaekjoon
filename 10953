@@ -1,0 +1,7 @@
+casenum = int(input())
+result = []
+for i in range(casenum):
+    a = input().split(",")
+    result.append(int(a[0])+int(a[1]))
+for i in result:
+    print(i)

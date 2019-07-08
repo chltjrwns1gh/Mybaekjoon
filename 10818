@@ -1,0 +1,10 @@
+testcasenum = int(input())
+data = input().split(" ")
+min = 1000000
+max = -1000000
+for i in range(testcasenum):
+    if int(data[i]) > max:
+        max = int(data[i])
+    if int(data[i]) < min:
+        min = int(data[i])
+print(str(min)+" "+str(max))

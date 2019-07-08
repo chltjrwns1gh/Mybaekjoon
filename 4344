@@ -1,0 +1,18 @@
+a = int(input())
+result = []
+for i in range(a):
+    b = input().split(' ')
+    for i in range(len(b)):
+        b[i] = int(b[i])
+    avg = 0
+    for i in range(b[0]):
+        avg += b[i+1]
+    avg /= b[0]
+    num = 0
+    for i in range(b[0]):
+        if avg<b[i+1]:
+            num+=1
+    perc = round(num/b[0]*100,3)
+    result.append(perc)
+for i in range(a):
+    print("%0.3f"%(result[i])+'%')

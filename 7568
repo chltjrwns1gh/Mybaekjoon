@@ -1,0 +1,19 @@
+casenum = int(input())
+testcase = []
+for i in range(casenum):
+    tmp = input().split(" ")
+    for j in range(len(tmp)):
+        tmp[j] = int(tmp[j])
+    testcase.append(tmp)
+ans = []
+for i in range(casenum):
+    #calculating 'i'th num
+    lvl = 1
+    for j in range(casenum):
+        if i==j:
+            continue
+        if testcase[i][0] < testcase[j][0] and testcase[i][1] < testcase[j][1]:
+            lvl += 1
+    ans.append(lvl)
+for i in ans:
+    print(i,end = ' ')

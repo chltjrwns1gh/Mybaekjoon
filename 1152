@@ -1,0 +1,5 @@
+a = input().strip().split(' ')
+if a == ['']:
+    print(0)
+    exit()
+print(len(a))

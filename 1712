@@ -1,0 +1,8 @@
+a,b,c = input().split(" ")
+a,b,c = int(a),int(b),int(c)
+if c==b:
+    print(-1)
+elif a/(c-b) < 0:
+    print(-1)
+else:
+    print(int(a/(c-b))+1)

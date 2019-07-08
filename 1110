@@ -1,0 +1,15 @@
+def plus(a):
+    if int(a/10)==0:
+        return a*10+a
+    else:
+        if int(a/10)+a%10>=10:
+            return a%10*10+(int(a/10)+a%10)%10
+        elif int(a/10)+a%10<10:
+            return a%10*10+int(a/10)+a%10
+num=0
+a = int(input())
+b = plus(a)
+while a!=b:
+    b = plus(b)
+    num+=1
+print(num+1)

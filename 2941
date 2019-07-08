@@ -1,0 +1,21 @@
+chrab = ['c=','c-','d-','lj','nj','s=','z=']
+intxt = input()
+count = 0
+count2 = 0
+alphabet = []
+flag = 0
+for i in range(len(intxt)):
+    if i < len(intxt)-2:
+        if intxt[i]+intxt[i+1]+intxt[i+2] == 'dz=':
+            alphabet.append('dz=')
+            count2 += 1
+            continue
+    if i < len(intxt)-1:
+        if intxt[i]+intxt[i+1] in chrab:
+            alphabet.append(intxt[i]+intxt[i+1])
+            count += 1
+            continue
+    alphabet.append(intxt[i])
+    #print(alphabet)
+    #print(count,count2)
+print(len(alphabet)-count2 - count)

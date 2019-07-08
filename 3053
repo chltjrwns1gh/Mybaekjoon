@@ -1,0 +1,4 @@
+pi = 3.14159265358979322238
+a = int(input())
+print(a*a*pi)
+print(float(a*a*2))

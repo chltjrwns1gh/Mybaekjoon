@@ -1,0 +1,7 @@
+ans = ['D','C','B','A','E']
+for i in range(3):
+    a = list(map(int,input().split(" ")))
+    sum = 0
+    for i in a:
+        sum += i
+    print(ans[sum])

@@ -1,0 +1,16 @@
+trynum = int(input())
+pointarr = []
+for i in range(trynum):
+    a = list(input())
+    testpoint = 0
+
+    point = 0
+    for j in a:
+        if j=='O':
+            point+=1
+        else:
+            point = 0
+        testpoint += point
+    pointarr.append(testpoint)
+for i in pointarr:
+    print(i)

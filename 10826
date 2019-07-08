@@ -1,0 +1,7 @@
+a = int(input())
+ans = [0,1,0]
+for i in range(2,a+1):
+    ans[2] = ans[0]+ans[1]
+    ans[0] = ans[1]
+    ans[1] = ans[2]
+print(ans[2])

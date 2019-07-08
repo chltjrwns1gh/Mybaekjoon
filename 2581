@@ -1,0 +1,36 @@
+import sys
+input = sys.stdin.readline
+
+M = int(input().strip())
+N = int(input().strip())
+
+prime_arr = [2]
+for i in range(3,10001):
+    flag = 0
+    for prime in prime_arr:
+        if i%prime != 0:
+            flag = 1
+
+        if i%prime == 0:
+            flag = 2
+            break
+    if flag == 1:
+        prime_arr.append(i)
+
+min_prime = -1
+sum = 0
+flag = 0
+count = 0
+for i in range(M,N+1):
+    if i in prime_arr:
+        count += 1
+        sum += i
+        if flag == 0:
+            min_prime = i
+            flag = 1
+if count == 0:
+    print(-1)
+    exit()
+else:
+    print(sum)
+    print(min_prime)

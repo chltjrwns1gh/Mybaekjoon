@@ -1,0 +1,18 @@
+def solve(num, startpos, endpos):
+    arr = [1, 2, 3]
+    arr.remove(startpos)
+    arr.remove(endpos)
+    elsenum = arr[0]
+    if num == 1:
+        print("%d %d" % (startpos, endpos))
+        return
+    else:
+        solve(num-1, startpos, elsenum)
+        print("%d %d" % (startpos, endpos))
+        solve(num-1, elsenum, endpos)
+        return
+
+
+n = int(input())
+print(2**n - 1)
+solve(n, 1, 3)

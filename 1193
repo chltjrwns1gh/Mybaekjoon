@@ -1,0 +1,15 @@
+intinput = int(input())
+numline = 0
+numnum = 1
+while intinput > 0:
+    intinput -= numnum
+    numnum += 1
+    numline += 1
+intinput += numline
+dir = numline % 2
+# dir = 0 means left-down
+# dir = 1 means right-upper
+if dir==1:
+    print("%d/%d"%(numline + 1 - intinput,intinput))
+if dir == 0:
+    print("%d/%d" % (intinput, numline + 1 - intinput))

@@ -1,0 +1,29 @@
+def num_recolor(arr):
+    b = 0 # BWBWBWBW
+    w = 0 # WBWBWBWB
+    arr_b = ['BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB']
+    arr_w = ['WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW', 'WBWBWBWB', 'BWBWBWBW']
+    for i in range(8):
+        for j in range(8):
+            if arr_b[i][j] != arr[i][j]:
+                b += 1
+            if arr_w[i][j] != arr[i][j]:
+                w += 1
+    return min(b,w)
+
+n,m = input().split(" ")
+n,m = int(n),int(m)
+board = []
+for i in range(n):
+    board.append(input())
+ans = 64
+for i in range(n-8+1):
+    arr_check = board[i:i+8]
+    for j in range(m-8+1):
+        for k in range(8):
+            arr_check[k] = arr_check[k][j:j+8]
+        col = num_recolor(arr_check)
+        if ans > col:
+            ans = col
+        arr_check = board[i:i + 8]
+print(ans)

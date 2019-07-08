@@ -1,0 +1,19 @@
+testcasenum = int(input())
+strinput = []
+for i in range(testcasenum):
+    strinput.append(input())
+count = 0
+for i in range(testcasenum):
+    db = [strinput[i][0]]
+    flag = 0 # initializing
+    for j in strinput[i]:# j means 'j'th char in 'i'th word
+        if j != db[-1]:
+            if j not in db:
+                db.append(j)
+            else:
+                flag = 1 # don't count
+                break
+    #print("%d th db : "%(i) + str(db))
+    if flag == 0:
+        count += 1
+print(count)

@@ -1,0 +1,12 @@
+strinput = input().upper()
+abarr = [0 for i in range(26)]
+for i in strinput:
+    abarr[ord(i)-ord('A')] += 1
+maxnum = -1,0#ord,pos
+for i in range(26):
+    if maxnum[0] < abarr[i]:
+        maxnum = abarr[i],i
+if abarr.count(maxnum[0]) == 1:
+    print(chr(maxnum[1]+ord('A')))
+else:
+    print("?")

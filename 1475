@@ -1,0 +1,27 @@
+testnum = input()
+arr = [0 for i in range(10)]
+# 0 to 9
+for i in testnum:
+    if i == '9' or i == '6':
+        arr[6] += 1
+    else:
+        arr[ ord(i) - ord('0')] += 1
+max = 0
+flag = 0 #only 6 is the max
+# flag = 1 : another num is max
+for i in range(10):
+    if max < arr[i]:
+        max = arr[i]
+for i in range(10):
+    if i == 6:
+        continue
+    else:
+        if max == arr[i]:
+            flag = 1
+if max == arr[6] and flag == 0:
+    if max %2 == 1:
+        max = (max+1)/2
+    else:
+        max /= 2
+max = int(max)
+print(max)

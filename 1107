@@ -1,0 +1,73 @@
+# case1 : 100 -> 목표_channel
+# case2 : n -> 목표_channel(단, n < 목표_channel)
+# case3 : n -> 목표_channel(단, n > 목표_channel)
+
+
+import sys
+input = sys.stdin.readline
+
+
+def available(chan, buttons):
+    # returns whether 'chan' is valid channel (which is made by buttons)
+    # buttons = usable number buttons
+    str_chan = str(chan)
+    for i in str_chan:
+        if int(i) not in buttons:
+            return False
+    return True
+
+
+def setcha(buttons, chan):
+    # case2(chan_1) 와 case 3(chan_2) 중 더 나은 case를 골라서
+    #     total_button_push_num return
+    if buttons == []:
+        return abs(100-chan) + len(str(chan))
+    # both cases starts at 목표 channel
+    chan_1 = chan
+    chan_2 = chan
+
+    while True:
+        if available(chan_1, buttons):
+            break
+        # if no valid chan_1 found until search finished:
+        #     set chan_1 100 and break
+        if chan_1 == 0:
+            chan_1 = 100
+            break
+        chan_1 -= 1
+    while True:
+        if available(chan_2, buttons):
+            break
+        # if no valid chan_2 found until search finished:
+        #     set chan_2 100 and break
+        if chan_2 == 1000000:
+            chan_2 = 100
+            break
+        chan_2 += 1
+    mov_chan_1 = abs(chan_1 - chan) + len(str(chan_1))
+    mov_chan_2 = abs(chan_2 - chan) + len(str(chan_2))
+    return min(mov_chan_1, mov_chan_2)
+
+# main()
+
+
+channel = int(input())
+no_cha_num = int(input())
+no_button = input().split(" ")
+if no_cha_num == 0:
+    no_button = []
+yes_button = [i for i in range(0, 10)]
+start_cha = 100
+ans = []
+
+# case 1
+ans.append(abs(start_cha-channel))
+
+for i in no_button:
+    yes_button.remove(int(i))
+
+# min(case 2 , case 3)
+ans.append(setcha(yes_button, channel))
+
+# min(all)
+print(min(ans[0], ans[1]))

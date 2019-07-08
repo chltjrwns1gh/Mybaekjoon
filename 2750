@@ -1,0 +1,17 @@
+def nsqsort(case):
+    length = len(case)
+    for j in range(length-1):
+        for i in range(length-1-j):
+            if case[i] > case[i+1]:
+                temp = case[i]
+                case[i] = case[i+1]
+                case[i+1] = temp
+    return case
+
+testcasenum = int(input())
+testcase = []
+for i in range(testcasenum):
+    testcase.append(int(input()))
+
+for i in nsqsort(testcase):
+    print(i)

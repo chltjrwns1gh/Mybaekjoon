@@ -1,0 +1,10 @@
+a = []
+for i in range(9):
+    tmp = list(map(int,input().split(" ")))
+    for j in range(9):
+        a.append(tmp[j])
+b = a[:]
+b.sort()
+print(b[-1])
+print((a.index(b[-1]))//9 + 1,end = ' ')
+print((a.index(b[-1]))%9 + 1)

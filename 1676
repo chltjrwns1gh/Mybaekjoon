@@ -1,0 +1,11 @@
+def solve(num):
+    var = 0
+    while num%5 ==0:
+        var += 1
+        num /= 5
+    return var
+a = int(input())
+number = 0
+for i in range(1,a+1):
+    number += solve(i)
+print(number)

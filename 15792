@@ -1,0 +1,8 @@
+a,b = input().split(" ")
+a,b = int(a),int(b)
+print(a//b,end = '')
+a = a%b
+print(".",end = '')
+for i in range(1010):
+    print((a*10)//b, end = '')
+    a = (a*10)%b

@@ -1,0 +1,14 @@
+a = int(input())
+if 90<= a and a <= 100:
+    print("A")
+    exit()
+elif 80 <= a and a <= 89:
+    print("B")
+    exit()
+elif 70 <= a and a <= 79:
+    print("C")
+    exit()
+elif 60 <= a and a <= 69:
+    print("D")
+    exit()
+print("F")

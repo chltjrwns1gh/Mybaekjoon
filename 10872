@@ -1,0 +1,17 @@
+arr = []
+arr.append("1") #0
+arr.append("1") #1
+arr.append("2") #2
+arr.append("6") #3
+arr.append("24") #4
+
+arr.append("120") #5
+arr.append("720") #6
+arr.append("5040") #7
+arr.append("40320") #8
+arr.append("362880") #9
+
+arr.append("3628800") #10
+arr.append("39916800") #11
+arr.append("479001600") #12
+print(arr[int(input())])

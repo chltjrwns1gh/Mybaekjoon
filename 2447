@@ -1,0 +1,29 @@
+import math
+
+k = int(round(math.log(int(input()), 3),1))
+arr = [['*'], [], [], [], [], [], [], [], [], []]
+
+
+def solve(beforenum):  # beforenum = k-1
+    global arr
+
+    # now making 'k'th square
+    for i in range(3 ** beforenum):
+        arr[beforenum + 1].append(arr[beforenum][i] * 3)
+    for i in range(3 ** beforenum):
+        tmp = arr[beforenum][i]
+        for j in range(3 ** beforenum):
+            tmp += ' '
+        tmp += arr[beforenum][i]
+        arr[beforenum + 1].append(tmp)
+    for i in range(3 ** beforenum):
+        arr[beforenum + 1].append(arr[beforenum][i] * 3)
+
+
+for i in range(k):
+    # make 'k'th square from N=3 to N=3^k
+    solve(i)
+
+# print wanted square
+for i in arr[k]:
+    print(i)

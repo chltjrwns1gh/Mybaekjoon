@@ -1,0 +1,46 @@
+import sys
+input = sys.stdin.readline
+
+casenum = int(input().strip())
+testcase = []
+for i in range(casenum):
+	testcase.append(int(input().strip()))
+
+prime_arr_72 = [2]
+for i in range(3, 72):
+	flag = 0
+	# means until prime
+	for j in prime_arr_72:
+		if i % j == 0:
+			flag = 1
+			break
+	if flag == 0:
+		prime_arr_72.append(i)
+
+for k in testcase:
+	prime_arr_k = []
+	for i in range(2, k+1):
+		if i < 2:
+			continue
+		flag = 0
+		# means until prime
+		for j in prime_arr_72:
+			if i < j * j:
+				break
+			if i % j == 0:
+				flag = 1
+				break
+		if flag == 0:
+			prime_arr_k.append(i)
+
+	half = k//2
+	prime_half_index = 0
+	next_index = 2
+	while(prime_arr_k[prime_half_index] <= half):
+		prime_half_index += 1
+	# now prime_half_index = # of num
+	# k = component of testcase[]
+	for i in range(prime_half_index):
+		if k - prime_arr_k[prime_half_index-1 - i] in prime_arr_k:
+			print(prime_arr_k[prime_half_index - i -1], k - prime_arr_k[prime_half_index-1 - i])
+			break

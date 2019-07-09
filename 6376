@@ -1,0 +1,14 @@
+a = [1,1,2,6,24,120,720,5040,40320,362880,362800]
+print("n e")
+print("- -----------")
+sum = 0.0
+for i in range(10):
+    print(i,end = ' ')
+    sum += 1/a[i]
+    if i == 0 or i == 1:
+        print(int(sum))
+        continue
+    if i == 2:
+        print(sum)
+        continue
+    print("%.9f"%round(sum,9))

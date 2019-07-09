@@ -1,0 +1,6 @@
+for i in range(2,101):
+    for m in range(2,i+1):
+        for k in range(m,i+1):
+            for j in range(k,i+1):
+                if i*i*i == (k*k*k)+(m*m*m)+(j*j*j):
+                    print("Cube = %d, Triple = (%d,%d,%d)"%(i,m,k,j))

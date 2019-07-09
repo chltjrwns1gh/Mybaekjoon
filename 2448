@@ -1,0 +1,25 @@
+def getk(num):
+    num /= 3
+    k = 0
+    while num/2 >= 1:
+        num /= 2
+        k += 1
+    return k
+def solve(knum):
+    global ans
+    nnum_1 = 3*(2**(knum-1))
+    blank = ''
+    for i in range(nnum_1):
+        blank += ' '
+    for i in range(nnum_1):
+        ans[knum].append(blank+ans[knum-1][i]+blank)
+    for i in range(nnum_1):
+        ans[knum].append(ans[knum-1][i]+' '+ans[knum-1][i])
+n = int(input())
+k = getk(n)
+ans = [[] for i in range(11)]
+ans[0] = ['  *  ',' * * ','*****']
+for i in range(1,k+1):
+    solve(i)
+for i in ans[k]:
+    print(i)

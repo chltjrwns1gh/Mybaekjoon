@@ -1,0 +1,54 @@
+def solve(num):
+    global ans
+    for i in range(len(ans[num])+4):
+        if i == 0 or i == len(ans[num])+3:
+            tmp = ''
+            for k in range(4*num+1):
+                tmp += '*'
+            tmp += ' '
+            ans[num+1].append(tmp)
+        elif i == 1:
+            tmp = '*'
+            for k in range(4*num):
+                tmp += ' '
+            tmp += ' '
+            ans[num+1].append(tmp)
+        elif i == len(ans[num])+2:
+            tmp = '*'
+            for k in range(4*num-1):
+                tmp += ' '
+            tmp += '*'
+            tmp += ' '
+            ans[num+1].append(tmp)
+        elif i == len(ans[num])+3:
+            tmp = ''
+            for k in range(4*num+1):
+                tmp += '*'
+            tmp += ' '
+            ans[num+1].append(tmp)
+        elif i == 2:
+            tmp = '* '
+            tmp +=  ans[num][0][:-1]
+            tmp += '** '
+            ans[num+1].append(tmp)
+        else:
+            tmp = '* '
+            tmp += ans[num][i-2]
+            tmp += '*'
+            tmp += ' '
+            ans[num+1].append(tmp)
+
+
+n = int(input())
+ans = [[] for i in range(101)]
+ans[1] = ['*']
+ans[2] = ['***** ','*     ','* *** ','* * * ','* * * ','*   * ','***** ']
+
+for i in range(2,n):
+    solve(i)
+
+for i in range(len(ans[n])):
+    if i == 1:
+        print("* ")
+        continue
+    print(ans[n][i])

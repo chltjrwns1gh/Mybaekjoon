@@ -1,0 +1,14 @@
+n = int(input())
+file_size_list = list(map(int,input().split(" ")))
+cluster_size = int(input())
+
+cluster_num = 0
+for i in file_size_list:
+    if i == 0:
+        continue
+    else:
+        if i % cluster_size == 0:
+            cluster_num += i//cluster_size
+        else:
+            cluster_num += i//cluster_size + 1
+print(cluster_num*cluster_size)

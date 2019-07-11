@@ -1,0 +1,10 @@
+n = int(input())
+l = int(input())
+c = int(input())
+max_songs = ((c-l)//(l+1)) +1
+if max_songs % 13 == 0:
+    max_songs -= 1
+if n % max_songs == 0:
+    print(n // max_songs)
+else:
+    print(n // max_songs +1)

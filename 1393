@@ -1,0 +1,16 @@
+station_x,station_y = tuple(map(int,input().split(" ")))
+now_x,now_y,v_x,v_y = tuple(map(int,input().split(' ')))
+for i in range(100,0,-1):
+    if v_x % i == 0 and v_y % i == 0:
+        v_x //= i
+        v_y //= i
+        break
+distance_sq = []
+distance_sq.append((station_x-now_x)**2 + (station_y-now_y)**2)
+new_distance = (station_x-(now_x+v_x))**2 + (station_y-(now_y+v_y))**2
+while distance_sq[-1]>new_distance:
+    distance_sq.append(new_distance)
+    now_x += v_x
+    now_y += v_y
+    new_distance = (station_x-(now_x+v_x))**2 + (station_y-(now_y+v_y))**2
+print(now_x,now_y)

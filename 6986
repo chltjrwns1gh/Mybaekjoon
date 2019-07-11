@@ -1,0 +1,18 @@
+import sys
+input = sys.stdin.readline
+n, k = tuple(map(int,input().split(" ")))
+num = []
+for i in range(n):
+    num.append(float(input()))
+num.sort()
+sum_1 = 0
+sum_2 = 0
+for i in range(k,n-k):
+    sum_1 += num[i]
+print("%.02f"%(round(sum_1/(n-2*k)+1e-9,2)))
+for i in range(k):
+    num[i] = num[k]
+    num[n-i-1] = num[n-k-1]
+for i in range(n):
+    sum_2 += num[i]
+print("%.02f"%round((sum_2/n)+1e-9,2))

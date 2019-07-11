@@ -1,0 +1,29 @@
+def rank(LIST):
+    rank_list = []
+    rank = 1
+    step = 1
+    for i in range(len(LIST)-1):
+        rank_list.append(rank)
+        if LIST[i+1] == LIST[i]:
+            step += 1
+            continue
+        else:
+            rank += step
+            step = 1
+    rank_list.append(rank)
+    return rank_list
+
+n, new_point,p = tuple(map(int,input().split(" ")))
+if n == 0:
+    print(1)
+    exit()
+else:
+    list = list(map(int,input().split(" ")))
+list.append(new_point)
+list.sort(reverse = True)
+ranking = rank(list)
+idx_new_point = n-sorted(list).index(new_point)
+if idx_new_point < p:
+    print(ranking[idx_new_point])
+else:
+    print(-1)

@@ -1,0 +1,24 @@
+def tree_cut(ith, standard):
+    if ith % standard == 0:
+        return ith // standard - 1
+    else:
+        return ith // standard
+
+
+n, c, w = tuple(map(int, input().split(" ")))
+trees_len = []
+for i in range(n):
+    trees_len.append(int(input()))
+trees_len.sort(reverse=True)
+money_arr = []
+for tree_standard in range(trees_len[0], 0, -1):
+    tmp = 0
+    for tree_ith in trees_len:
+        cost = (tree_ith//tree_standard)*tree_standard*w-c*(tree_cut(tree_ith, tree_standard))
+        if cost <= 0:
+            continue
+        else:
+            tmp += cost
+    money_arr.append(tmp)
+money_arr.sort()
+print(money_arr[-1])

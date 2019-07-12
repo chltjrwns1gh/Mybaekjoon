@@ -1,0 +1,30 @@
+def combination(m, n, arr):
+    if arr[m][n] != 0:
+        return arr[m][n]
+    if m < n:
+        arr[m][n] = 0
+        return 0
+    elif m == n:
+        arr[m][n] = 1
+        return 1
+    elif n == 1:
+        arr[m][n] = m
+        return m
+    elif n == 0:
+        arr[m][n] = 1
+        return 1
+    else:
+        arr[m][n] = combination(m-1, n-1, arr) + combination(m-1, n, arr)
+        return arr[m][n]
+
+
+def solve(list_input):
+    arr = [[0 for i in range(31)] for j in range(31)]
+    n = list_input[0]
+    m = list_input[1]
+    print(combination(m, n, arr))
+
+
+t = int(input())
+for i in range(t):
+    solve(list(map(int, input().split(" "))))

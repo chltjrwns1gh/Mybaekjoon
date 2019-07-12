@@ -1,0 +1,9 @@
+x, y, w, s = tuple(map(int, input().split(" ")))
+x, y = min(x, y), max(x, y)
+if 2*w > s:
+    if s > w:
+        print((s-2*w)*x+w*(x+y))
+    else:  # w >= s
+        print(s*x+2*s*((y-x)//2)+w*((y-x) % 2))
+else:  # s >= 2*w
+    print(w*(x+y))

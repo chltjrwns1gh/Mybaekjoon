@@ -1,0 +1,41 @@
+def inside(xy, star):
+    r = star[2]
+    dis = (xy[0] - star[0])**2 + (xy[1] - star[1])**2
+    if r*r > dis:
+        return True
+    else:
+        return False
+
+
+def both_inside(xy_1, xy_2, star):
+    r = star[2]
+    dis1 = (xy_1[0] - star[0])**2 + (xy_1[1] - star[1])**2
+    dis2 = (xy_2[0] - star[0])**2 + (xy_2[1] - star[1])**2
+    if r*r > dis1 and r*r > dis2:
+        return True
+    else:
+        return False
+
+
+def solve(start_point, destination_point, star_system):
+    ans = 0
+    for star in star_system:
+        if inside(start_point, star):
+            ans += 1
+        if inside(destination_point, star):
+            ans += 1
+        if both_inside(start_point, destination_point, star):
+            ans -= 2
+    return ans
+
+
+t = int(input())
+for i in range(t):
+    start_x, start_y, desti_x, desti_y = tuple(map(int, input().split(" ")))
+    n = int(input())
+    system = list()
+    for j in range(n):
+        system.append(list(map(int, input().split(" "))))
+    start = start_x, start_y
+    desti = desti_x, desti_y
+    print(solve(start, desti, system))

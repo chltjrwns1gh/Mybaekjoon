@@ -1,0 +1,99 @@
+def difference(m_1, d_1, y_1, m_2, d_2, y_2):
+    # 2 - 1
+    # % 4 == 0 : 윤년
+    # % 4 == 0 and % 100 == 0 : 평년
+    # % 400 == 0 : 윤년
+    #       0  1   2   3   4   5   6   7   8   9   10  11  12
+    date = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    dt_y = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    days_1 = 0
+    days_2 = 0
+    if yoon(y_1):
+        for i in range(m_1):
+            days_1 += dt_y[i]
+        days_1 += d_1
+    else:
+        for i in range(m_1):
+            days_1 += date[i]
+        days_1 += d_1
+    if yoon(y_2):
+        for i in range(m_2):
+            days_2 += dt_y[i]
+        days_2 += d_2
+    else:
+        for i in range(m_2):
+            days_2 += date[i]
+        days_2 += d_2
+
+    if y_1 == y_2:
+        return days_2 - days_1
+    elif y_1 == y_2+1:
+        if yoon(y_2):
+            return days_2 - (days_1 + 366)
+        else:
+            return days_2 - (days_1 + 365)
+    else:
+        if yoon(y_1):
+            return (days_2 + 366) - days_1
+        else:
+            return (days_2 + 365) - days_1
+
+
+def yoon(year):
+    if year % 400 == 0:
+        return True
+    elif year % 4 == 0 and year % 100 == 0:
+        return False
+    elif year % 4 == 0:
+        return True
+    else:
+        return False
+
+
+def solve(dd_m, dd_d, dd_y, dh_m, dh_d):
+    flags = list()
+    dif_date = 0
+    dh_y = dd_y-1
+    flags.append(difference(dd_m, dd_d, dd_y, dh_m, dh_d, dh_y))
+    dh_y = dd_y
+    flags.append(difference(dd_m, dd_d, dd_y, dh_m, dh_d, dh_y))
+    dh_y = dd_y+1
+    flags.append(difference(dd_m, dd_d, dd_y, dh_m, dh_d, dh_y))
+
+    if abs(flags[0]) == min(abs(flags[0]), min(abs(flags[1]), abs(flags[2]))):
+        dif_date = flags[0]
+        dh_y = dd_y-1
+    elif abs(flags[1]) == min(abs(flags[0]), min(abs(flags[1]), abs(flags[2]))):
+        dif_date = flags[1]
+        dh_y = dd_y
+    elif abs(flags[2]) == min(abs(flags[0]), min(abs(flags[1]), abs(flags[2]))):
+        dif_date = flags[2]
+        dh_y = dd_y+1
+
+    return dif_date, dh_m, dh_d, dh_y
+
+
+def ans_print(tup):
+    dif_date, dh_m, dh_d, dh_y = tup
+    if -7 <= dif_date < 0:
+        if dif_date == -1:
+            print("%d/%d/%d IS %d DAY PRIOR" % (dh_m, dh_d, dh_y, abs(dif_date)))
+            return
+        print("%d/%d/%d IS %d DAYS PRIOR" % (dh_m, dh_d, dh_y, abs(dif_date)))
+    elif dif_date == 0:
+        print("SAME DAY")
+    elif 0 < dif_date <= 7:
+        if dif_date == 1:
+            print("%d/%d/%d IS %d DAY AFTER" % (dh_m, dh_d, dh_y, abs(dif_date)))
+            return
+        print("%d/%d/%d IS %d DAYS AFTER" % (dh_m, dh_d, dh_y, abs(dif_date)))
+    else:
+        print("OUT OF RANGE")
+
+
+n = int(input())
+for i in range(n):
+    date_due, date_hw = tuple(input().split(" "))
+    dd_m, dd_d, dd_y = tuple(map(int, date_due.split("/")))
+    dh_m, dh_d = tuple(map(int, date_hw.split("/")))
+    ans_print(solve(dd_m, dd_d, dd_y, dh_m, dh_d))

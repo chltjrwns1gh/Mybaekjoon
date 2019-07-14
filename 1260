@@ -1,0 +1,54 @@
+import sys
+sys.setrecursionlimit(10000)
+def dfs(from_num):
+    # use stack
+    global arr
+    global stack
+    global visited
+    global n
+
+    print(from_num, end=' ')
+    visited[from_num] = 1
+    for i in range(1, n+1):
+        if arr[from_num][i] == 1:
+            if visited[i] == 0:
+                visited[i] = 1
+                stack.append(i)
+        while len(stack) != 0:
+            dfs(stack.pop())
+
+
+def bfs(from_num):
+    # use queue
+    global arr
+    global queue
+    global visited
+    global n
+
+    print(from_num, end=' ')
+    visited[from_num] = 1
+    for i in range(1, n+1):
+        if arr[from_num][i] == 1:
+            if visited[i] == 0:
+                visited[i] = 1
+                queue.append(i)
+    while len(queue) != 0:
+        tmp = queue[0]
+        queue = queue[1:]
+        bfs(tmp)
+
+
+n, m, v = tuple(map(int, input().split(" ")))
+arr = [[0 for i in range(n+1)] for j in range(n+1)]
+stack = list()
+queue = list()
+visited = [0 for k in range(n+1)]
+for i in range(m):
+    a, b = tuple(map(int, input().split(" ")))
+    arr[a][b] = 1
+    arr[b][a] = 1
+
+dfs(v)
+print()
+visited = [0 for i in range(n+1)]
+bfs(v)

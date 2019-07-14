@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(100000)
 
 def solve(given_maze, n_max, m_max, x, y):
     global result_maze

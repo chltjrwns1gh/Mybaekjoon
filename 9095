@@ -1,0 +1,14 @@
+def solve(num):
+    if num == 1:
+        return 1
+    if num == 2:
+        return 2
+    if num == 3:
+        return 4
+    return solve(num-1) + solve(num-2) + solve(num-3)
+
+
+n = int(input())
+for i in range(n):
+    input_num = int(input())
+    print(solve(input_num))

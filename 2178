@@ -1,0 +1,50 @@
+import sys
+sys.setrecursionlimit(10000)
+
+def solve(given_maze, n_max, m_max, x, y):
+    global result_maze
+    global tried
+    global queue
+    tried += 1
+    if x == n_max-1 and y == m_max-1:
+        return
+    if available(given_maze, n_max, m_max, x, y-1):
+        if result_maze[x][y-1] > result_maze[x][y] + 1:
+            result_maze[x][y-1] = result_maze[x][y] + 1
+            queue.append((x, y-1))
+    if available(given_maze, n_max, m_max, x-1, y):
+        if result_maze[x-1][y] > result_maze[x][y] + 1:
+            result_maze[x-1][y] = result_maze[x][y] + 1
+            queue.append((x-1, y))
+    if available(given_maze, n_max, m_max, x, y+1):
+        if result_maze[x][y+1] > result_maze[x][y] + 1:
+            result_maze[x][y+1] = result_maze[x][y] + 1
+            queue.append((x, y+1))
+    if available(given_maze, n_max, m_max, x+1, y):
+        if result_maze[x+1][y] > result_maze[x][y] + 1:
+            result_maze[x+1][y] = result_maze[x][y] + 1
+            queue.append((x+1, y))
+    while len(queue) != 0:
+        tmp = queue[0]
+        queue = queue[1:]
+        solve(given_maze, n_max, m_max, tmp[0], tmp[1])
+
+def available(arr, a, b, x, y):
+    if x < 0 or x >= a:
+        return False
+    if y < 0 or y >= b:
+        return False
+    if arr[x][y] == '0':
+        return False
+    return True
+
+queue = list()
+tried = 0
+n, m = tuple(map(int, input().split(" ")))
+maze = list()
+for i in range(n):
+    maze.append(input())
+result_maze = [[99999 for i in range(m)] for j in range(n)]
+result_maze[0][0] = 1
+solve(maze, n, m, 0, 0)
+print(result_maze[n-1][m-1])

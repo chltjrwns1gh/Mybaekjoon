@@ -1,0 +1,25 @@
+import sys
+sys.setrecursionlimit(1000000)
+input = sys.stdin.readline
+
+def bin_search(num, start, end):
+    global a
+    mid = (start+end)//2
+    if a[mid] == num:
+        return True
+    if start >= end:
+        return False
+    else:
+        if a[mid] < num:
+            return bin_search(num, mid+1, end)
+        else:
+            return bin_search(num, start, mid-1)
+
+
+n = int(input())
+a = list(map(int, input().split(" ")))
+m = int(input())
+is_exist = list(map(int, input().split(" ")))
+a.sort()
+for check_num in is_exist:
+    print(int(bin_search(check_num, 0, len(a)-1)))

@@ -1,0 +1,36 @@
+def solve_1(num):
+    if num == 1:
+        return 500
+    if 3 >= num >= 2:
+        return 300
+    if 6 >= num >= 4:
+        return 200
+    if 10 >= num >= 7:
+        return 50
+    if 15 >= num >= 11:
+        return 30
+    if 21 >= num >= 16:
+        return 10
+    return 0
+
+
+def solve_2(num):
+    if num == 1:
+        return 512
+    if 3 >= num >= 2:
+        return 256
+    if 7 >= num >= 4:
+        return 128
+    if 15 >= num >= 8:
+        return 64
+    if 31 >= num >= 16:
+        return 32
+    return 0
+
+
+# 1:500, 2:300, 3:200, 4:50, 5:30, 6:10
+# 1:512, 2:256, 4:128, 8:64, 16:32
+t = int(input())
+for i in range(t):
+    a, b = tuple(map(int, input().split(" ")))
+    print((solve_1(a)+solve_2(b))*10000)

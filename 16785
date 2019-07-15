@@ -1,0 +1,7 @@
+a, b, c = tuple(map(int, input().split(" ")))
+n = 0
+coin = a*n+b*(n//7)
+while coin < c:
+    n += 1
+    coin = a * n + b * (n // 7)
+print(n)

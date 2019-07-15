@@ -1,0 +1,6 @@
+arr = list(map(int, input().split(" ")))
+num = 0
+for i in arr:
+    if i > 0:
+        num += 1
+print(num)

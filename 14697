@@ -1,0 +1,8 @@
+a, b, c, n = tuple(map(int, input().split(" ")))
+for a_iter in range(n//a+1):
+    for b_iter in range(n//b+1):
+        for c_iter in range(n//c+1):
+            if a_iter*a+b_iter*b+c_iter*c == n:
+                print(1)
+                exit()
+print(0)

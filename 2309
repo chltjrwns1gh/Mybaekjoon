@@ -1,0 +1,19 @@
+arr = list()
+for i in range(9):
+    arr.append(int(input()))
+ans = list()
+flag = 1
+for i in range(9):
+    for j in range(i+1,9):
+        sum = 0
+        for k in range(9):
+            if k != i and k != j:
+                sum += arr[k]
+        if sum == 100:
+            for k in range(9):
+                if k != i and k != j:
+                    ans.append(arr[k])
+            ans.sort()
+            for k in ans:
+                print(k)
+            exit()

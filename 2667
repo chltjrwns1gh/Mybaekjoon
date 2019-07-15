@@ -1,0 +1,70 @@
+import sys
+sys.setrecursionlimit(1000000)
+
+def solve():
+    global n
+    global map_given
+    global house
+    global queue
+    for i in range(n):
+        for j in range(n):
+            if map_given[i][j] == 1:
+                map_given[i][j] = -1
+    for i in range(n):
+        for j in range(n):
+            if map_given[i][j] == -1:
+                queue = list()
+                house += 1
+                map_given[i][j] = house
+                bfs(i, j)
+
+
+def bfs(x, y):
+    global map_given
+    global house
+    global queue
+    if available(x, y-1):
+        map_given[x][y-1] = house
+        queue.append((x, y-1))
+    if available(x-1, y):
+        map_given[x-1][y] = house
+        queue.append((x-1, y))
+    if available(x+1, y):
+        map_given[x+1][y] = house
+        queue.append((x+1, y))
+    if available(x, y+1):
+        map_given[x][y+1] = house
+        queue.append((x, y+1))
+    while len(queue) != 0:
+        new_x, new_y = queue[0]
+        queue = queue[1:]
+        bfs(new_x, new_y)
+
+
+def available(x, y):
+    global n
+    global map_given
+    if 0 <= x < n and 0 <= y < n:
+        if map_given[x][y] == -1:
+            return True
+    return False
+
+
+queue = list()
+n = int(input())
+map_given = list()
+for i in range(n):
+    tmp_list = list(map(int, input()))
+    map_given.append(tmp_list)
+house = 0
+solve()
+print(house)
+ans = [0 for i in range(house)]
+for i in range(n):
+    for j in range(n):
+        for h in range(house):
+            if map_given[i][j] == h+1:
+                ans[h] += 1
+ans.sort()
+for i in ans:
+    print(i)

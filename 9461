@@ -1,0 +1,12 @@
+arr = [1,1,1,2,2]
+t = int(input())
+for i in range(t):
+    arr = [1,1,1,2,2]
+    tmp = int(input())
+    if 1 <= tmp <= 5:
+        print(arr[tmp-1])
+    else:
+        for j in range(tmp-5):
+            arr.append(arr[0]+arr[-1])
+            arr = arr[1:]
+        print(arr[-1])

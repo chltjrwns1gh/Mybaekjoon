@@ -1,0 +1,24 @@
+n = int(input())
+nums = [0]
+for i in range(n):
+    nums.append(int(input()))
+num_z = 0
+ans_num = list()
+
+for idx in range(1, n+1):
+    idx_num_visit = [0 for i in range(n+1)]
+    now_idx = idx
+    for i in range(n):
+        idx_num_visit[idx] = 1
+        idx = nums[idx]
+        if idx == now_idx:
+            for j in range(n+1):
+                if idx_num_visit[j] == 1:
+                    ans_num.append(j)
+            break
+ans_num = sorted(list(set(ans_num)))
+
+print(len(ans_num))
+for i in ans_num:
+    print(i)
+

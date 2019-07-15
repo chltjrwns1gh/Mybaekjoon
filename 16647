@@ -1,0 +1,3 @@
+a = '키파 생일 축하'
+for i in range(1000):
+    print(str(1000-i)+a+(str(i)+'.'))

@@ -1,0 +1,12 @@
+n, a, b, c, d = tuple(map(int, input().split(" ")))
+ans = list()
+if n%c == 0:
+    ans.append(n//c*d)
+else:
+    ans.append((n//c+1)*d)
+if n%a == 0:
+    ans.append(n//a*b)
+else:
+    ans.append((n//a+1)*b)
+ans.sort()
+print(ans[0])

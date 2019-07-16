@@ -1,0 +1,7 @@
+n, p = tuple(map(int, input().split(" ")))
+arr = list()
+new_num = n
+while new_num not in arr:
+    arr.append(new_num)
+    new_num = (arr[-1]*n)%p
+print(len(arr)-arr.index(new_num))

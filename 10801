@@ -1,0 +1,15 @@
+a = list(map(int, input().split(" ")))
+b = list(map(int, input().split(" ")))
+win_a = 0
+win_b = 0
+for i in range(10):
+    if a[i] > b[i]:
+        win_a += 1
+    if a[i] < b[i]:
+        win_b += 1
+if win_a > win_b:
+    print("A")
+elif win_a < win_b:
+    print("B")
+else:
+    print("D")

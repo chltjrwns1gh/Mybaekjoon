@@ -1,0 +1,12 @@
+n, m = list(map(int, input().split(" ")))
+n_array = list(map(int, input().split(" ")))
+m_array = list(map(int, input().split(" ")))
+n_max = 0
+m_max = 0
+for i in n_array:
+    if i > n_max:
+        n_max = i
+for i in m_array:
+    if i > m_max:
+        m_max = i
+print(n_max+m_max)

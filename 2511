@@ -1,0 +1,28 @@
+point_a = 0
+point_b = 0
+last_a = 0
+last_b = 0
+a = list(map(int, input().split(" ")))
+b = list(map(int, input().split(" ")))
+for i in range(10):
+    if a[i] == b[i]:
+        point_a += 1
+        point_b += 1
+    if a[i] > b[i]:
+        point_a += 3
+        last_a = i
+    if a[i] < b[i]:
+        point_b += 3
+        last_b = i
+print(point_a, point_b)
+if point_a > point_b:
+    print("A")
+if point_a == point_b:
+    if last_a > last_b:
+        print("A")
+    if last_a == last_b:
+        print("D")
+    if last_a < last_b:
+        print("B")
+if point_a < point_b:
+    print("B")

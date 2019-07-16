@@ -1,0 +1,20 @@
+a, b = input().split(" ")
+min_sum = 0
+max_sum = 0
+for i in range(len(a)):
+    if a[i] == '6':
+        a = a[:i]+'5'+a[i+1:]
+for i in range(len(b)):
+    if b[i] == '6':
+        b = b[:i]+'5'+b[i+1:]
+min_sum = int(a)+int(b)
+
+for i in range(len(a)):
+    if a[i] == '5':
+        a = a[:i]+'6'+a[i+1:]
+for i in range(len(b)):
+    if b[i] == '5':
+        b = b[:i]+'6'+b[i+1:]
+max_sum = int(a)+int(b)
+
+print(min_sum, max_sum)

@@ -1,0 +1,13 @@
+arr = []
+max_len = 0
+for i in range(5):
+    tmp = input()
+    arr.append(tmp)
+    if max_len < len(tmp):
+        max_len = len(tmp)
+for i in range(max_len):
+    for arr_num in range(5):
+        if i+1 > len(arr[arr_num]):
+            continue
+        else:
+            print(arr[arr_num][i], end='')

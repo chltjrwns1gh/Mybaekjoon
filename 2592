@@ -1,0 +1,15 @@
+arr = [0 for i in range(101)]
+input_num = list()
+sum = 0
+for i in range(10):
+    input_num.append(int(input()))
+    sum += input_num[-1]
+    arr[input_num[-1]//10] += 1
+print(sum//10)
+max_count = 0
+max_idx = 0
+for i in range(len(arr)):
+    if arr[i] > max_count:
+        max_count = arr[i]
+        max_idx = i
+print(max_idx * 10)

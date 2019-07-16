@@ -1,0 +1,8 @@
+hr, mn, sc = tuple(map(int, input().split(" ")))
+sc += int(input())
+mn += sc//60
+sc = sc%60
+hr += mn//60
+mn = mn%60
+hr = hr%24
+print(hr, mn, sc)

@@ -1,0 +1,8 @@
+n = int(input())
+arr = list(map(int, input().split(" ")))
+a = int(input())
+sum = 0
+for i in arr:
+    if i == a:
+        sum += 1
+print(sum)

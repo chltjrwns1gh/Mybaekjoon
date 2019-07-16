@@ -1,0 +1,13 @@
+n = [3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1]
+a = input()
+b = input()
+c = list()
+for i in range(len(a)):
+    c.append(n[ord(a[i])-ord('A')])
+    c.append(n[ord(b[i])-ord("A")])
+for i in range(len(c)-2):
+    tmp = list()
+    for j in range(len(c)-1):
+        tmp.append((c[j]+c[j+1])%10)
+    c = tmp
+print("%d%d"%(c[0],c[1]))

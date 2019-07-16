@@ -1,0 +1,13 @@
+import sys
+sys.setrecursionlimit(100000)
+def fibo(num):
+    global arr
+    if len(arr) >= num+1:
+        return arr[num]
+    else:
+        arr.append(fibo(num-1)+fibo(num-2)+fibo(num-3)+fibo(num-4))
+        return arr[num]
+arr = [1,1,2,4]
+t = int(input())
+for i in range(t):
+    print(fibo(int(input())))

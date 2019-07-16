@@ -1,0 +1,26 @@
+a = input()
+arr = [[], [], []]
+if 'U' in a:
+    a = a[a.index("U"):]
+for i in range(len(a)):
+    if a[i] == 'U':
+        arr[0].append(i)
+    if a[i] == 'C':
+        arr[1].append(i)
+    if a[i] == 'P':
+        arr[2].append(i)
+if len(arr[0]) == 0:
+    print("I hate UCPC")
+    exit()
+if len(arr[1]) <= 1:
+    print("I hate UCPC")
+    exit()
+if len(arr[2]) == 0:
+    print("I hate UCPC")
+    exit()
+
+for i in arr[2]:
+    if arr[1][0] < i < arr[1][-1]:
+        print("I love UCPC")
+        exit()
+print("I hate UCPC")

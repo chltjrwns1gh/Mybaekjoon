@@ -1,0 +1,8 @@
+n = int(input())
+n = 1000-n
+arr = [500, 100, 50, 10, 5, 1]
+coin = 0
+for i in arr:
+    coin += n//i
+    n = n % i
+print(coin)

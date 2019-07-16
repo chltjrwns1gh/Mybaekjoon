@@ -1,0 +1,12 @@
+n, a, b = tuple(map(int, input().split(" ")))
+arr = list()
+for i in range(n):
+    arr.append(list(map(int, input().split(" "))))
+for i in range(n):
+    if arr[a-1][i] > arr[a-1][b-1]:
+        print("ANGRY")
+        exit()
+    if arr[i][b-1] > arr[a-1][b-1]:
+        print("ANGRY")
+        exit()
+print("HAPPY")

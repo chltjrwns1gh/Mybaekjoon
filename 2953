@@ -1,0 +1,5 @@
+arr = [0, 0, 0, 0, 0]
+for i in range(5):
+    input_txt = list(map(int, input().split()))
+    arr[i] += sum(input_txt)
+print(arr.index(sorted(arr)[-1])+1, sorted(arr)[-1])

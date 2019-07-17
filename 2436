@@ -1,0 +1,28 @@
+from math import sqrt
+
+
+def sero(num1, num2):
+    # a < b
+    if gcd(num1, num2) == 1:
+        return True
+    else:
+        return False
+
+
+def gcd(num_1, num_2):
+    if num_1 == 0:
+        return num_2
+    if num_2 == 0:
+        return num_1
+    else:
+        return gcd(max(num_1, num_2) % min(num_1, num_2), min(num_1, num_2))
+
+
+a, b = tuple(map(int, input().split(" ")))
+mn = b//a
+min_morn = 1
+for i in range(2, int(sqrt(mn))+1):
+    if mn % i == 0:
+        if sero(i, mn//i):
+            min_morn = i
+print(min_morn*a, (mn//min_morn)*a)

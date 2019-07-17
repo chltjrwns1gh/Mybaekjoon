@@ -1,0 +1,15 @@
+def solve(string, find_str):
+    string += string[:len(find_str)]
+    for i in range(len(string)-len(find_str)+1):
+        if string[i:i+len(find_str)] == find_str:
+            return True
+    return False
+
+
+str_input = input()
+n = int(input())
+count = 0
+for i in range(n):
+    if solve(input(), str_input):
+        count += 1
+print(count)

@@ -1,0 +1,12 @@
+n = input()
+arr_2 = ['000', '001', '010', '011', '100', '101', '110', '111']
+arr_8 = ['0', '1', '2', '3', '4', '5', '6', '7']
+arr_2plus = ['', '1', '10', '11', '100', '101', '110', '111']
+if n == '0':
+    print(0)
+    exit()
+for i in range(len(n)):
+    if i == 0:
+        print(arr_2plus[arr_8.index(n[i])], end='')
+    else:
+        print(arr_2[arr_8.index(n[i])], end='')

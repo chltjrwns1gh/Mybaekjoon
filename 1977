@@ -1,0 +1,14 @@
+from math import sqrt
+m = int(input())
+n = int(input())
+arr_sq = list()
+for i in range(m, n+1):
+    if abs(sqrt(i) - int(sqrt(i))) <= 1e-8:
+        arr_sq.append(i)
+
+if len(arr_sq) > 0:
+    print(sum(arr_sq))
+    print(arr_sq[0])
+else:
+    print(-1)
+

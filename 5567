@@ -1,0 +1,16 @@
+n = int(input())
+m = int(input())
+arr = [[] for i in range(n+1)]
+for i in range(m):
+    a, b = tuple(map(int, input().split()))
+    arr[a].append(b)
+    arr[b].append(a)
+people = list()
+for i in arr[1]:
+    people.append(i)
+last_people = people[:]
+for i in people:
+    for j in arr[i]:
+        if j not in last_people:
+            last_people.append(j)
+print(len(last_people)-1) # minus 1 due to the 1->3 and 3->1

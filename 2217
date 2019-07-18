@@ -1,0 +1,10 @@
+n = int(input())
+rope = list()
+for i in range(n):
+    rope.append(int(input()))
+rope.sort()
+ans = list()
+for i in range(len(rope)):
+    ans.append(rope[i]*(len(rope)-i))
+ans.sort()
+print(ans[-1])

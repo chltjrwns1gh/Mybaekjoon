@@ -1,0 +1,30 @@
+class Character:
+    def __init__(self, hp, mp, attack, defense):
+        self.hp = hp
+        self.mp = mp
+        self.attack = attack
+        self.defense = defense
+
+    def dif(self, difhp, difmp, difattack, difdefense):
+        self.hp += difhp
+        self.mp += difmp
+        self.attack += difattack
+        self.defense += difdefense
+        if self.hp < 1:
+            self.hp = 1
+        if self.mp < 1:
+            self.mp = 1
+        if self.attack < 0:
+            self.attack = 0
+
+
+def fight(hp, mp, attack, defense):
+    return hp+5*mp+2*attack+2*defense
+
+
+t = int(input())
+for i in range(t):
+    a = list(map(int, input().split()))
+    character = Character(a[0], a[1], a[2], a[3])
+    character.dif(a[4], a[5], a[6], a[7])
+    print(fight(character.hp, character.mp, character.attack, character.defense))

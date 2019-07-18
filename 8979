@@ -1,0 +1,44 @@
+class Medal:
+    def __init__(self, number, gold, silver, bronze):
+        self.th = -1
+        self.idx = number
+        self.g = gold
+        self.s = silver
+        self.b = bronze
+
+    def __eq__(self, other):
+        if self.g == other.g and self.s == other.s and self.b == other.b:
+            return True
+        else:
+            return False
+
+    def __lt__(self, other): # self < other
+        if self.g < other.g:
+            return True
+        elif self.g == other.g:
+            if self.s < other.s:
+                return True
+            elif self.s == other.s:
+                if self.b < other.b:
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
+
+
+n, k = tuple(map(int, input().split()))
+country = list()
+for i in range(n):
+    a, b, c, d = tuple(map(int, input().split()))
+    country.append(Medal(a, b, c, d))
+th = 0
+for i in country:
+    if i.idx == k:
+        wanttofind = i
+for nation in country:
+    if nation > wanttofind:
+        th += 1
+print(th+1)

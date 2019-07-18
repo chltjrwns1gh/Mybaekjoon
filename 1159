@@ -1,0 +1,16 @@
+import re
+n = int(input())
+names = list()
+flag = 0
+for i in range(n):
+    names.append(input())
+for i in range(26):
+    initial = list()
+    for name in names:
+        if name[0] == chr(ord('a')+i):
+            initial.append(name)
+    if len(initial) >= 5:
+        print(initial[0][0], end='')
+        flag = 1
+if flag == 0:
+    print("PREDAJA")

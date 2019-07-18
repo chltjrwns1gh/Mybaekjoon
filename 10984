@@ -1,0 +1,13 @@
+t = int(input())
+for i in range(t):
+    n = int(input())
+    sum_g = 0.0
+    sum_c = 0
+    for j in range(n):
+        c, g = input().split()
+        c = int(c)
+        g = float(g)
+        sum_g += float(c*int(g*10))
+        sum_c += c
+    sum_g /= sum_c
+    print(sum_c, int(sum_g)/10)

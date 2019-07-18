@@ -1,0 +1,12 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+p = int(input())
+x_cost = a*p
+y_cost = 0
+if c >= p:
+    y_cost = b
+else:
+    y_cost = b + d*(p-c)
+print(min(x_cost, y_cost))

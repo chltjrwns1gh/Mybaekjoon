@@ -1,0 +1,37 @@
+import sys
+input = sys.stdin.readline
+
+
+def binary_search(value, start, end, given_list):
+    mid = (start+end)//2
+    if start == end:
+        if given_list[mid] == value:
+            return mid
+        else:
+            return -1
+    elif start > end:
+        return -1
+    if given_list[mid] == value:
+        return mid
+    elif given_list[mid] > value:
+        return binary_search(value, start, mid-1, given_list)
+    elif given_list[mid] < value:
+        return binary_search(value, mid+1, end, given_list)
+
+
+n, m = tuple(map(int, input().split()))
+case1 = list()
+case2 = list()
+case1and2 = list()
+for i in range(n):
+    case1.append(input())
+for i in range(m):
+    case2.append(input())
+case1.sort()
+case2.sort()
+for i in case1:
+    if binary_search(i, 0, len(case2)-1, case2) != -1:
+        case1and2.append(i)
+print(len(case1and2))
+for i in case1and2:
+    print(i)

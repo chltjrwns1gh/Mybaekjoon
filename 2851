@@ -1,0 +1,18 @@
+sum = 0
+flag = 0
+for i in range(10):
+    if flag == 1:
+        continue
+    a = int(input())
+    if abs(sum+a-100) == abs(sum-100):
+        print(sum+a)
+        flag = 1
+    elif abs(sum-100) < abs(sum+a-100):
+        print(sum)
+        flag = 1
+    elif abs(sum+a-100) < abs(sum-100):
+        sum += a
+if flag == 1:
+    exit()
+else:
+    print(sum)

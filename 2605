@@ -1,0 +1,19 @@
+import sys
+input = sys.stdin.readline
+from collections import deque
+n = int(input())
+students = deque()
+picked_number = list(map(int, input().split()))
+for i in range(len(picked_number)):
+    tmp = deque()
+    for j in range(i-picked_number[i]):
+        tmp.append(students.popleft())
+    tmp.append(i+1)
+    while True:
+        try:
+            tmp.append(students.popleft())
+        except:
+            break
+    students = tmp.copy()
+for i in range(n):
+    print(students.popleft(), end=' ')

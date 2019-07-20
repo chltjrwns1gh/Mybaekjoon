@@ -1,0 +1,34 @@
+import sys
+input = sys.stdin.readline
+from collections import deque
+left_deque = deque()
+right_deque = deque()
+right_length = 0
+string_input = input().strip()
+n = int(input())
+left_deque.extend(string_input)
+left_length = len(string_input)
+# cursor points left blank
+for i in range(n):
+    order = input().strip()
+    if order == 'L':
+        if left_length != 0:
+            right_deque.appendleft(left_deque.pop())
+            left_length -= 1
+            right_length += 1
+    elif order == 'D':
+        if right_length != 0:
+            left_deque.append(right_deque.popleft())
+            left_length += 1
+            right_length -= 1
+    elif order == 'B':
+        if left_length != 0:
+            left_deque.pop()
+            left_length -= 1
+    elif order[0] == 'P':
+        left_deque.append(order[-1])
+        left_length += 1
+for i in range(left_length):
+    print(left_deque.popleft(), end='')
+for i in range(right_length):
+    print(right_deque.popleft(), end='')

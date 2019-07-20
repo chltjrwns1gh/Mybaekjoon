@@ -1,0 +1,15 @@
+n = list('0'+input())
+for i in range(len(n)):
+    n[i] = int(n[i])
+for i in range(len(n)-1-1):
+    if n[len(n)-1-i] >= 5:
+        n[len(n)-1-i] = 0
+        n[len(n)-1-i-1] += 1
+    else:
+        n[len(n)-1-i] = 0
+if n[0] == 0:
+    for i in n[1:]:
+        print(i, end='')
+else:
+    for i in n:
+        print(i, end='')

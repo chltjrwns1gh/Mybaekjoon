@@ -1,0 +1,17 @@
+n = int(input())
+for i in range(n):
+    str_input = input()
+    check_arr = [0 for i in range(26)]
+    for char in range(len(str_input)):
+        check_arr[ord(str_input[char]) - ord('A')] += 1
+        if check_arr[ord(str_input[char]) - ord('A')] % 4 == 3:
+            if char+1 == len(str_input):
+                print("FAKE")
+                break
+            if str_input[char] == str_input[char+1]:
+                continue
+            else:
+                print("FAKE")
+                break
+    else:
+        print("OK")

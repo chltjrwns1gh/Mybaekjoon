@@ -1,0 +1,24 @@
+import math
+
+
+def make_arr_prime_nums(to_num):
+    arr_return = [2]
+    for is_prime in range(3, int(math.sqrt(to_num))+1):
+        for prime in arr_return:
+            if is_prime % prime == 0:
+                break
+        else:
+            arr_return.append(is_prime)
+    return arr_return
+
+
+n = int(input())
+if n == 1:
+    print(0)
+else:
+    for i in make_arr_prime_nums(n):
+        if n % i == 0:
+            print(n-n//i)
+            break
+    else:
+        print(n-1)

@@ -1,0 +1,27 @@
+import sys
+input = sys.stdin.readline
+n = int(input())
+DOMjudge = dict()
+Kattis = dict()
+for i in range(n):
+    tmp = input()
+    if tmp not in DOMjudge.keys():
+        DOMjudge[tmp] = 1
+    else:
+        DOMjudge[tmp] += 1
+for i in range(n):
+    tmp = input()
+    if tmp not in Kattis.keys():
+        Kattis[tmp] = 1
+    else:
+        Kattis[tmp] += 1
+dict_total_judge = dict()
+for i in list(set(list(Kattis.keys())+list(DOMjudge.keys()))):
+    if i not in dict_total_judge.keys():
+        if i in Kattis.keys() and i in DOMjudge.keys():
+            dict_total_judge[i] = min(Kattis[i], DOMjudge[i])
+        else:
+            dict_total_judge[i] = 0
+    else:
+        continue
+print(sum(dict_total_judge.values()))

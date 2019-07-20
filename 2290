@@ -1,0 +1,60 @@
+def make_str_horizontal(available, length):
+    return_str = ' '
+    for i in range(length):
+        if available:
+            return_str += '-'
+        else:
+            return_str += ' '
+    return_str += ' '
+    return return_str+' '
+
+
+def make_str_column(available1, available2, length):
+    return_str = ''
+    if available1:
+        return_str += '|'
+    else:
+        return_str += ' '
+    for i in range(length):
+        return_str += ' '
+    if available2:
+        return_str += '|'
+    else:
+        return_str += ' '
+    return return_str+' '
+
+
+def create(num):
+    result_arr = [[]for i in range(10)]
+    isexist = [[1, 1, 1, 0, 1, 1, 1], [0, 0, 1, 0, 0, 1, 0], [1, 0, 1, 1, 1, 0, 1], [1, 0, 1, 1, 0, 1, 1], [0, 1, 1, 1, 0, 1, 0], [1, 1, 0, 1, 0, 1, 1],  [1, 1, 0, 1, 1, 1, 1], [1, 0, 1, 0, 0, 1, 0], [1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 0, 1, 1]]
+    for i in range(10):
+        # make 1st line
+        result_arr[i].append(make_str_horizontal(isexist[i][0], num))
+
+        # make 2nd line and 3rd line
+        for j in range(num):
+            result_arr[i].append(make_str_column(isexist[i][1], isexist[i][2], num))
+
+        # make 4th line
+        result_arr[i].append(make_str_horizontal(isexist[i][3], num))
+
+        # make 5th and 6th line
+        for j in range(num):
+            result_arr[i].append(make_str_column(isexist[i][4], isexist[i][5], num))
+
+        # make 7th line
+        result_arr[i].append(make_str_horizontal(isexist[i][6], num))
+    return result_arr
+
+
+s, n = input().split()
+s = int(s)
+arr = create(s)
+num_result = [[]for i in range(2*s+3)]
+for i in n:
+    for j in range(2*s+3):
+        num_result[j] += arr[int(i)][j]
+for i in num_result:
+    for j in i:
+        print(j, end='')
+    print()

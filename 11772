@@ -1,0 +1,15 @@
+def calculate_power(a, b):
+    if b == 0:
+        return 1
+    else:
+        return a*calculate_power(a, b-1)
+
+
+n = int(input())
+sum = 0
+for i in range(n):
+    input_txt = input()
+    number = int(input_txt[:-1])
+    power = int(input_txt[-1])
+    sum += calculate_power(number, power)
+print(sum)

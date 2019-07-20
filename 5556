@@ -1,0 +1,31 @@
+def solve(to_left, to_up, length):
+    if length % 2 == 0:
+        center = (length//2) % 3
+        if to_left > length//2:
+            to_left = length-to_left+1
+        if to_up > length//2:
+            to_up = length-to_up+1
+        return (center-max(length//2 - to_up, length//2 - to_left)) % 3
+    else:  # length % 2 == 1:
+        center = ((length+1)//2) % 3
+        if to_left > (length+1)//2:
+            to_left = length-to_left+1
+        if to_up > (length+1)//2:
+            to_up = length-to_up+1
+        return (center - max((length+1)//2 - to_up, (length+1)//2 - to_left)) % 3
+
+
+# red     : 1
+# blue    : 2
+# yellow  : 3 or 0
+n = int(input())
+k = int(input())
+for i in range(k):
+    a, b = tuple(map(int, input().split()))
+    color_code = solve(a, b, n)
+    if color_code == 0 or color_code == 3:
+        print(3)
+    elif color_code == 1:
+        print(1)
+    elif color_code == 2:
+        print(2)

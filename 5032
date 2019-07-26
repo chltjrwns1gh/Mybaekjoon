@@ -1,0 +1,7 @@
+e, f, c = tuple(map(int, input().split()))
+bottle = e+f
+total_beverage = 0
+while bottle >= c:
+    total_beverage += bottle // c
+    bottle = bottle//c + bottle%c
+print(total_beverage)

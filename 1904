@@ -1,0 +1,14 @@
+def solve(num):
+    if num == 1:
+        return 1
+    elif num == 2:
+        return 2
+    a = 1
+    b = 2
+    for _ in range(num-2):
+        a, b = b, (a+b)%15746
+    return b
+
+
+n = int(input())
+print(solve(n))

@@ -1,0 +1,11 @@
+w_point = list()
+k_point = list()
+for _ in range(10):
+    w_point.append(int(input()))
+for _ in range(10):
+    k_point.append(int(input()))
+w_point.sort(reverse = True)
+k_point.sort(reverse = True)
+w_score = w_point[0] + w_point[1] + w_point[2]
+k_score = k_point[0] + k_point[1] + k_point[2]
+print(w_score, k_score)

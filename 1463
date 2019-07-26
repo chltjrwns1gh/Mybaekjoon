@@ -1,0 +1,28 @@
+import sys
+sys.setrecursionlimit(1000000)
+
+
+def solve(num):
+    global arr
+    if arr[num] != -1:
+        return arr[num]
+    if num%2 == 0 and num%3 == 0:
+        arr[num] = min(solve(num//3)+1, solve(num//2)+1, solve(num-1)+1)
+        return arr[num]
+    elif num%2 == 0 and num%3 != 0:
+        arr[num] = min(solve(num//2)+1, solve(num-1)+1)
+        return arr[num]
+    elif num%2 != 0 and num%3 == 0:
+        arr[num] = min(solve(num//3)+1, solve(num-1)+1)
+        return arr[num]
+    elif num%2 != 0 and num%3 != 0:
+        arr[num] = solve(num-1)+1
+        return arr[num]
+
+
+n = int(input())
+arr = [-1 for _ in range(n+1)]
+arr[1] = 0
+for i in range(1, n+1):
+    solve(i)
+print(solve(n))

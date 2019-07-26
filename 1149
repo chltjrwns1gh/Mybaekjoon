@@ -1,0 +1,9 @@
+n = int(input())
+before_red, before_green, before_blue = tuple(map(int, input().split()))
+for _ in range(n-1):
+    r, g, b = tuple(map(int, input().split()))
+    new_red = r+min(before_blue, before_green)
+    new_blue = b+min(before_red, before_green)
+    new_green = g+min(before_red, before_blue)
+    before_red, before_green, before_blue = new_red, new_green, new_blue
+print(min(before_red, before_green, before_blue))

@@ -1,0 +1,15 @@
+n = int(input())
+arr_old = [1 for _ in range(10)]
+for _ in range(n-1):
+    arr_new = [0 for _ in range(10)]
+    for i in range(10):
+        if i == 0:
+            arr_new[0] += arr_old[1]
+        elif i == 9:
+            arr_new[9] += arr_old[8]
+        else:
+            arr_new[i] += arr_old[i-1]+arr_old[i+1]
+    for i in range(10):
+        arr_new[i] = arr_new[i]%1000000000
+    arr_old = arr_new[:]
+print((sum(arr_old) - arr_old[0])%1000000000)

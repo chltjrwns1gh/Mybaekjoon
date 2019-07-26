@@ -1,0 +1,20 @@
+n = int(input())
+triangle = list()
+for _ in range(n):
+    new_triangle_line = list(map(int, input().split()))
+    triangle.append(new_triangle_line)
+for triangle_line_idx in range(1, n):
+    triangle_line = triangle[triangle_line_idx]
+    for idx in range(len(triangle_line)):
+        number = triangle_line[idx]
+        if idx == 0:
+            right = triangle[triangle_line_idx-1][idx]
+            triangle_line[idx] = triangle_line[idx] + right
+        elif idx == len(triangle_line)-1:
+            left = triangle[triangle_line_idx-1][idx-1]
+            triangle_line[idx] = triangle_line[idx] + left
+        else:
+            left = triangle[triangle_line_idx-1][idx-1]
+            right = triangle[triangle_line_idx-1][idx]
+            triangle_line[idx] = triangle_line[idx] + max(left, right)
+print(max(triangle[n-1]))

@@ -1,0 +1,23 @@
+import sys
+input = sys.stdin.readline
+
+
+def gcd(num1, num2):
+    if num1 == 0:
+        return num2
+    elif num2 == 0:
+        return num1
+    else:
+        return gcd(max(num1, num2) % min(num1, num2), min(num1, num2))
+
+
+n = int(input())
+if n == 2:
+    a, b = tuple(map(int, input().split()))
+    greatCommonDivisor = gcd(a, b)
+elif n == 3:
+    a, b, c = tuple(map(int, input().split()))
+    greatCommonDivisor = gcd(gcd(a, b), gcd(b, c))
+for i in range(1, greatCommonDivisor+1):
+    if greatCommonDivisor % i == 0:
+        print(i)

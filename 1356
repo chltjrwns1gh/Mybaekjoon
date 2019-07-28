@@ -1,0 +1,17 @@
+def check(number_string, idx):
+    forenum = 1
+    backnum = 1
+    for i in range(idx):
+        forenum *= int(number_string[i])
+    for i in range(idx, len(number_string)):
+        backnum *= int(number_string[i])
+    return forenum == backnum
+
+
+n = input()
+for idx in range(1, len(n)):
+    if check(n, idx):
+        print("YES")
+        break
+else:
+    print("NO")

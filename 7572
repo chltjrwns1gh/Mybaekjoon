@@ -1,0 +1,4 @@
+arr_gan = [str(i) for i in range(10)]
+arr_ji = 'ABCDEFGHIJKL'
+n = int(input())-2014+30
+print(arr_ji[n%12] + arr_gan[n%10])

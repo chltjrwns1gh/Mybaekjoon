@@ -1,0 +1,14 @@
+def solve(man, a, b, c, d):
+    result = 0
+    if 0 < (man % (a+b)) <= a:
+        result += 1
+    if 0 < (man % (c+d)) <= c:
+        result += 1
+    return result
+
+
+a, b, c, d = tuple(map(int, input().split()))
+p, m, n = tuple(map(int, input().split()))
+print(solve(p, a, b, c, d))
+print(solve(m, a, b, c, d))
+print(solve(n, a, b, c, d))

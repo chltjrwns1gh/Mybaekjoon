@@ -1,0 +1,13 @@
+n, m = tuple(map(int, input().split()))
+dict = {'.':'.', 'O':'O', '-':'|', '|':'-', '/':'\\', '\\':'/', '^':'<', '<':'v', 'v':'>', '>':'^'}
+string = list()
+for _ in range(n):
+    string.append(input())
+new_string = [['' for _ in range(n)] for i in range(m)]
+for i in range(n):
+    for j in range(m):
+        new_string[m-j-1][i] = dict[string[i][j]]
+for i in range(m):
+    for j in range(n):
+        print(new_string[i][j], end='')
+    print()

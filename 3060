@@ -1,0 +1,18 @@
+def solve(meals, max_per_day):
+    day = 1
+    if sum(meals) > max_per_day:
+        return day
+    while sum(meals) <= max_per_day:
+        new_meals = [0 for i in range(6)]
+        for i in range(6):
+            new_meals[i] = meals[i]+meals[(i+3)%6]+meals[(i-1)%6]+meals[(i+1)%6]
+        day += 1
+        meals = new_meals
+    return day
+
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    meals = list(map(int, input().split()))
+    print(solve(meals, n))

@@ -1,0 +1,20 @@
+def from26to10(string):
+    num = 0
+    th26 = 1
+    string = string[::-1]
+    for i in string:
+        num += th26 * (ord(i)-ord("A"))
+        th26 *= 26
+    return num
+
+
+
+n = int(input())
+for _ in range(n):
+    a, b = tuple(input().split('-'))
+    b = int(b)
+    a = from26to10(a)
+    if abs(a-b) <= 100:
+        print("nice")
+    else:
+        print("not nice")

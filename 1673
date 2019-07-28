@@ -1,0 +1,19 @@
+import sys
+
+
+def solve(string):
+    num = 0
+    n, k = tuple(map(int, string.split()))
+    num += n
+    coupon = 0
+    coupon += n
+    while coupon >= k:
+        new_chick = coupon//k
+        num += new_chick
+        coupon -= new_chick*k
+        coupon += new_chick
+    return num
+
+
+for line in sys.stdin:
+    print(solve(line))

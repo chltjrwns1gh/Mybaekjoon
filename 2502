@@ -1,0 +1,11 @@
+d, k = tuple(map(int, input().split()))
+days = [(1, 0), (0, 1)]
+for _ in range(d-2):
+    days.append((days[-1][0]+days[-2][0], days[-1][1]+days[-2][1]))
+m, n = days[-1][0], days[-1][1]
+for i in range(1, k//n+1):
+    if (k-n*i)%m == 0:
+        if (k-n*i)//m <= i:
+            print((k-n*i)//m)
+            print(i)
+            exit()

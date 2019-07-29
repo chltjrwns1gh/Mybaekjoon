@@ -1,0 +1,45 @@
+import sys
+input = sys.stdin.readline
+
+
+def find_class_captain(list_given):
+    # print("list given", list_given)
+    max_index = len(list_given)
+    max_len = 0
+    for i in range(len(list_given)-1, -1, -1):
+        if max_len <= len(list_given[i]):
+            max_len = len(list_given[i])
+            max_index = i
+    return max_index+1
+
+
+n = int(input())
+class_students = list()
+student_list = [[]for _ in range(n)]
+for _ in range(n):
+    class_students.append(list(map(int, input().split())))
+new_class_students_change_xy = [[0 for i in range(n)] for j in range(5)]
+for i in range(n):
+    for j in range(5):
+        new_class_students_change_xy[j][i] = class_students[i][j]
+
+# for line in new_class_students_change_xy:
+#     print(line)
+# print()
+
+# now find students with same class
+for year in new_class_students_change_xy:  # repeat for 5 times
+    # print("students of the year : ", year)
+
+    for student_index_i in range(n-1):
+        for student_index_j in range(student_index_i+1, n):
+            if year[student_index_i] == year[student_index_j]:
+                if student_index_j+1 not in student_list[student_index_i]:
+                    student_list[student_index_i].append(student_index_j+1)
+                if student_index_i+1 not in student_list[student_index_j]:
+                    student_list[student_index_j].append(student_index_i+1)
+
+            # print("student_list : ", student_list)
+    # print()
+
+print(find_class_captain(student_list))

@@ -1,0 +1,103 @@
+from collections import deque
+
+
+def ahead():
+    global snake
+    global directions
+    global direction_idx
+    head_i, head_j = snake.popleft()
+    snake.appendleft((head_i, head_j))
+    return head_i+directions[direction_idx][0], head_j+directions[direction_idx][1]
+
+
+def finished(i, j):
+    global board
+    size = len(board)
+    if i < 0 or i >= size:
+        return True
+    if j < 0 or j >= size:
+        return True
+    if board[i][j] == 1:  # == snake.body
+        return True
+    return False
+
+
+directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+direction_idx = 1
+# down, right, up, left
+# counter-clockwise
+n = int(input())
+k = int(input())
+
+board = [[0 for i in range(n)] for j in range(n)]
+board[0][0] = 1
+
+snake = deque()
+snake.append((0, 0))
+
+apple = -1
+snake_body = 1
+
+# get apple information
+for _ in range(k):
+    a, b = tuple(map(int, input().split()))
+    board[a-1][b-1] = -1
+
+line = int(input())
+controls = list()
+time_last = 0
+for _ in range(line):
+    # get control information
+    time, dir_change = tuple(input().split())
+    time = int(time)
+    dir_change = 1 if dir_change == 'L' else -1
+
+    # do the control
+    while time_last < time:
+        # print state of board
+        # print("time last : ", time_last)
+        # print("next turn time : ", time)
+        # print("dir : ", directions[direction_idx])
+        # for line in board:
+        #     print(line)
+        # print()
+
+        ahead_snake_i, ahead_snake_j = ahead()
+        if finished(ahead_snake_i, ahead_snake_j):
+            print(time_last+1)
+            exit()
+        else:
+            if board[ahead_snake_i][ahead_snake_j] == apple:
+                board[ahead_snake_i][ahead_snake_j] = 1
+                snake.appendleft((ahead_snake_i, ahead_snake_j))
+            else:
+                board[ahead_snake_i][ahead_snake_j] = 1
+                snake.appendleft((ahead_snake_i, ahead_snake_j))
+                tail_snake_i, tail_snake_j = snake.pop()
+                board[tail_snake_i][tail_snake_j] = 0
+        time_last += 1
+
+    direction_idx = (direction_idx+dir_change) % 4
+
+# last forward move
+while True:
+    # print state of board
+    # print("time last : ", time_last)
+    # for line in board:
+    #     print(line)
+    # print()
+
+    ahead_snake_i, ahead_snake_j = ahead()
+    if finished(ahead_snake_i, ahead_snake_j):
+        print(time_last+1)
+        exit()
+    else:
+        if board[ahead_snake_i][ahead_snake_j] == apple:
+            board[ahead_snake_i][ahead_snake_j] = 1
+            snake.appendleft((ahead_snake_i, ahead_snake_j))
+        else:
+            board[ahead_snake_i][ahead_snake_j] = 1
+            snake.appendleft((ahead_snake_i, ahead_snake_j))
+            tail_snake_i, tail_snake_j = snake.pop()
+            board[tail_snake_i][tail_snake_j] = 0
+    time_last += 1

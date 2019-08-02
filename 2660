@@ -1,0 +1,50 @@
+def solve(arr, src):
+    global num_member
+    depth = 0
+    queue = list()
+    queue.append(src)
+    visited = [0 for _ in range(num_member)]  # 0 false, 1 True
+    # print("-----source : ", src, '------')
+    while sum(visited) != num_member:
+        # print("depth   : ", depth)
+        # print("queue   : ", queue)
+        # print("visited : ", visited)
+        queue_will_add = list()
+        while len(queue) > 0:
+            now = queue[0]
+            visited[now] = 1
+            queue = queue[1:]
+            for idx in range(num_member):
+                if arr[now][idx] == 1 and visited[idx] == 0:
+                    queue_will_add.append(idx)
+        queue += queue_will_add
+        depth += 1
+    return depth-1
+
+
+num_member = int(input())
+arr_isfriend = [[0 for i in range(num_member)] for j in range(num_member)]
+input_isfriend = list(map(int, input().split()))
+while input_isfriend != [-1, -1]:
+    arr_isfriend[input_isfriend[0]-1][input_isfriend[1]-1] = 1
+    arr_isfriend[input_isfriend[1]-1][input_isfriend[0]-1] = 1
+    input_isfriend = list(map(int, input().split()))
+
+arr_point = dict()
+for idx in range(num_member):
+    arr_point[idx] = solve(arr_isfriend, idx)
+
+captain = list()
+min_point = 999  # minimum point -> captain
+for key in sorted(arr_point.keys()):
+    if min_point > arr_point[key]:
+        captain = list()
+        captain.append(key)
+        min_point = arr_point[key]
+    elif min_point == arr_point[key]:
+        captain.append(key)
+    else:
+        pass
+print(min_point, len(captain))
+for i in captain:
+    print(i+1, end=' ')

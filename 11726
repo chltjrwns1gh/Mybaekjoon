@@ -1,0 +1,16 @@
+import sys
+sys.setrecursionlimit(100000)
+
+def solve(num):
+    global arr
+    if arr[num] != -1:
+        return arr[num]
+    else:
+        arr[num] = (solve(num-1)+solve(num-2))%10007
+        return arr[num]
+
+
+n = int(input())
+arr = [0, 1, 2]+[-1 for i in range(n)]
+solve(n)
+print(arr[n])

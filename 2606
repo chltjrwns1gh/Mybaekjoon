@@ -1,0 +1,20 @@
+from collections import deque
+
+n = int(input())
+arr = [[0 for i in range(n)] for j in range(n)]
+for _ in range(int(input())):
+    a, b = tuple(map(int, input().split()))
+    arr[a-1][b-1] = 1
+    arr[b-1][a-1] = 1
+
+queue = deque()
+queue.append(0)
+visited = [0 for i in range(n)]
+while len(queue) != 0:
+    coord = queue.popleft()
+    visited[coord] = 1
+    for i in range(n):
+        if arr[coord][i] == 1 and visited[i] == 0:
+            queue.append(i)
+print(sum(visited)-1)
+

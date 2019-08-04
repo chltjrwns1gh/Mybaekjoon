@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    a, b = tuple(map(int, input().split()))
+    num = 1
+    for i in range(b):
+        num = (num*a)%10
+    print(num)

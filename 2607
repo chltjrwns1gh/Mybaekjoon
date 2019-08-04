@@ -1,0 +1,30 @@
+def issimilar(stra, strb):
+    a_cnt = [0 for _ in range(26)]
+    b_cnt = [0 for _ in range(26)]
+    for a in stra:
+        a_cnt[ord(a)-ord('A')] += 1
+    for b in strb:
+        b_cnt[ord(b)-ord('A')] += 1
+
+    if abs(len(stra)-len(strb)) >= 2:
+        return False
+    
+    cnt = 0
+    for _ in range(26):
+        if abs(a_cnt[_] - b_cnt[_]) == 2:
+            return False
+        cnt += abs(a_cnt[_] - b_cnt[_])
+    if cnt <= 2:
+        return True
+    else:
+        return False
+
+
+n = int(input())
+string = input()
+cnt = 0
+for _ in range(n-1):
+    exstring = input()
+    if issimilar(string, exstring):
+        cnt += 1
+print(cnt)

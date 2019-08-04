@@ -1,0 +1,8 @@
+a = input()
+if a[0] == '0':
+    if a[1] == 'x':
+        print(int(a[2:], 16))
+    else:
+        print(int(a[1:], 8))
+else:
+    print(int(a))

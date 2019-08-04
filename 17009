@@ -1,0 +1,11 @@
+arr = list()
+for _ in range(6):
+    arr.append(int(input()))
+apples = arr[0]*3+arr[1]*2+arr[2]
+bananas = arr[3]*3+arr[4]*2+arr[5]
+if apples == bananas:
+    print("T")
+elif apples > bananas:
+    print("A")
+elif apples < bananas:
+    print("B")

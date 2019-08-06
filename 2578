@@ -1,0 +1,41 @@
+def solve(plate, numbers, cnt):
+    if isbingo(plate):
+        return cnt
+    else:
+        for i in range(len(plate)):
+            for j in range(len(plate)):
+                if plate[i][j] == numbers[cnt]:
+                    plate[i][j] = 0
+                    break
+        return solve(plate, numbers, cnt+1)
+
+
+def isbingo(array):
+    cnt_bingo = 0
+    # check column
+    for i in range(len(array)):
+        # check row
+        if sum(array[i]) == 0:
+            cnt_bingo += 1
+        # check column
+        if array[0][i]+array[1][i]+array[2][i]+array[3][i]+array[4][i] == 0:
+            cnt_bingo += 1
+    # check diagonal
+    if array[0][0]+array[1][1]+array[2][2]+array[3][3]+array[4][4] == 0:
+        cnt_bingo += 1
+    if array[4][0]+array[3][1]+array[2][2]+array[1][3]+array[0][4] == 0:
+        cnt_bingo += 1
+    if cnt_bingo >= 3:
+        return True
+
+
+
+my_plate = list()
+for _ in range(5):
+    my_plate.append(list(map(int, input().split())))
+
+number_call = list()
+for _ in range(5):
+    number_call += list(map(int, input().split()))
+
+print(solve(my_plate, number_call, 0))

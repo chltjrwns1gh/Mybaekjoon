@@ -1,0 +1,10 @@
+n, m = tuple(map(int, input().split()))
+arr = [[] for j in range(n)]
+for _ in range(m):
+    a, b = tuple(map(int, input().split()))
+    if b-1 not in arr[a-1]:
+        arr[a-1].append(b-1)
+    if a-1 not in arr[b-1]:
+        arr[b-1].append(a-1)
+for i in range(n):
+    print(len(arr[i]))

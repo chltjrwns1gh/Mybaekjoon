@@ -1,0 +1,11 @@
+n = int(input())
+arr_a = list(map(int, input().split()))
+arr_b = list(map(int, input().split()))
+
+arr_a.sort(reverse=True)
+arr_b.sort()
+
+sum = 0
+for i in range(n):
+    sum += arr_a[i]*arr_b[i]
+print(sum)

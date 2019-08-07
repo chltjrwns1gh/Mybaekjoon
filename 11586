@@ -1,0 +1,20 @@
+n = int(input())
+mirror = list()
+for _ in range(n):
+    mirror.append(input())
+state = int(input())
+if state == 1:
+    for i in range(n):
+        for j in range(n):
+            print(mirror[i][j], end='')
+        print()
+elif state == 2:
+    for i in range(n):
+        for j in range(n):
+            print(mirror[i][n-j-1], end='')
+        print()
+else:
+    for i in range(n):
+        for j in range(n):
+            print(mirror[n-i-1][j], end='')
+        print()

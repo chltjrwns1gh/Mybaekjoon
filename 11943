@@ -1,0 +1,5 @@
+a, b = tuple(map(int, input().split()))
+c, d = tuple(map(int, input().split()))
+case1 = b+c
+case2 = a+d
+print(min(case1, case2))

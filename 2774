@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    x = input()
+    check = [0 for i in range(10)]
+    for i in x:
+        check[ord(i)-ord('0')] = 1
+    print(sum(check))

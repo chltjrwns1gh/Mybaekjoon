@@ -1,0 +1,12 @@
+arr_1 = list()
+for _ in range(4):
+    arr_1.append(int(input()))
+arr_2 = list()
+for _ in range(2):
+    arr_2.append(int(input()))
+sum = 0
+arr_1.sort()
+arr_2.sort()
+sum += arr_1[-1]+arr_1[-2]+arr_1[-3]
+sum += arr_2[-1]
+print(sum)

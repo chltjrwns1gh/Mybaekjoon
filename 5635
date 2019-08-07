@@ -1,0 +1,18 @@
+class Student():
+    def __init__(self, name, birth):
+        self.name = name
+        self.birth = birth
+
+    def __lt__(self, other):  # self < other
+        return self.birth > other.birth
+
+n = int(input())
+students = list()
+for _ in range(n):
+    name, day, month, year = tuple(input().split())
+    day, month, year = int(day), int(month), int(year)
+    birth = day+month*31+1000*year
+    students.append(Student(name, birth))
+students.sort()
+print(students[0].name)
+print(students[-1].name)

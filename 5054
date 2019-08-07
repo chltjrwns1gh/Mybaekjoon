@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    shops = sorted(list(map(int, input().split())))
+    total_dis = 0
+    for shop_idx in range(n):
+        total_dis += abs(shops[shop_idx] - shops[(shop_idx+1)%n])
+    print(total_dis)

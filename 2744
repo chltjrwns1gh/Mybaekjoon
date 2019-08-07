@@ -1,0 +1,10 @@
+string = list(input())
+for idx in range(len(string)):
+    if string[idx].isupper():
+        string[idx] = string[idx].lower()
+    else:
+        string[idx] = string[idx].upper()
+ans = ''
+for ch in string:
+    ans += str(ch)
+print(ans)

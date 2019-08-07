@@ -1,0 +1,5 @@
+n = int(input())
+for _ in range(n):
+    a, b = tuple(map(int, input().split()))
+    print("You get {} piece(s) and your dad gets".format(a//b), end='')
+    print(" {} piece(s).".format(a%b))

@@ -1,0 +1,6 @@
+n, m = tuple(map(int, input().split()))
+cnt = n
+while n//m != 0:
+    cnt += n//m
+    n = n//m
+print(cnt)

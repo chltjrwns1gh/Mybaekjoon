@@ -1,0 +1,30 @@
+import sys
+input = sys.stdin.readline
+
+
+def prime_number_list(num):
+    A = [True for i in range(num+1)]
+    i = 2
+    while i*i <= num:
+        if A[i]:
+            j = i**2
+            while j <= num:
+                A[j] = False
+                j += i
+        i += 1
+
+    return A
+
+
+# if A[idx] == True:
+#     it means idx == prime_number
+prime = prime_number_list(1000000)
+n = int(input())
+while n != 0:
+    for i in range(3, n):
+        if prime[i] and prime[n-i]:
+            print(n, '=', i, '+', n-i)
+            break
+    else:
+        print("Goldbach's conjecture is wrong.")
+    n = int(input())

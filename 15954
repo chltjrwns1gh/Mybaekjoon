@@ -1,0 +1,30 @@
+from math import sqrt
+import sys
+input = sys.stdin.readline
+
+
+def std_dev(arr):
+    mean = 0
+    for num in arr:
+        mean += num
+    mean /= len(arr)
+
+    sq_mean = 0
+    for num in arr:
+        sq_mean += (num - mean)**2
+    sq_mean /= len(arr)
+
+    return sqrt(sq_mean)
+
+
+n, k = tuple(map(int, input().split()))
+arr = list(map(int, input().split()))
+min_std_dev = 1e13
+for i in range(n-k+1):
+    for j in range(0, n+1-i-k):
+        dev = std_dev(arr[i:i+k+j])
+        if min_std_dev > dev:
+            min_std_dev = dev
+        # print(arr[i:i+k])
+        # print(std_dev(arr[i:i+k]))
+print(min_std_dev)

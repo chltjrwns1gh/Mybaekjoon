@@ -1,0 +1,32 @@
+def can_read(text):
+    # print(text)
+    arr = ['000000', '001111', '010011', '011100',
+           '100110', '101001', '110101', '111010']
+    for i in range(8):
+        if dist(text, arr[i]) <= 1:
+            # print(chr(i+ord('A')))
+            return chr(i+ord('A'))
+    else:
+        return '0'
+
+
+def dist(str1, str2):
+    cnt = 0
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            cnt += 1
+    return cnt
+
+
+n = int(input())
+letter = input()
+return_str = ''
+for i in range(n):
+    start = i*6
+    stop = (i+1)*6
+    if can_read(letter[start:stop]) != '0':
+        return_str += can_read(letter[start:stop])
+    else:
+        print(i+1)
+        exit()
+print(return_str)

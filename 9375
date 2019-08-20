@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    dress = {}
+    for i in range(n):
+        a, b = tuple(input().split())
+        if b in dress.keys():
+            dress[b].append(a)
+        else:
+            dress[b] = [a]
+    cnt = 1
+    # print(dress)
+    for key in dress.keys():
+        cnt *= len(dress[key])+1
+    cnt -= 1
+    print(cnt)

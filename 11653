@@ -1,0 +1,28 @@
+def num_prime(max_num):
+    global cnt
+    ret = [2, 3, 5, 7]
+    for i in range(11, max_num+1):
+        for j in ret:
+            cnt += 1
+            if i%j == 0:
+                break
+        else:
+            ret.append(i)
+
+
+    return ret
+
+
+n = int(input())
+cnt = 0
+primes = num_prime(10000)
+# print(cnt)
+while n > 1:
+    for prime in primes:
+        if n % prime == 0:
+            print(prime)
+            n //= prime
+            break
+    else:
+        print(n)
+        exit()

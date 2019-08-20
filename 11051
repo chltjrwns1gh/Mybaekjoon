@@ -1,0 +1,19 @@
+def combination(n, k):
+    if arr[n][k] != -1:
+        return arr[n][k]
+    if k == 0 or n == k:
+        arr[n][k] = 1
+        return arr[n][k]
+    if k == 1 or n == k-1:
+        arr[n][k] = n
+        return arr[n][k]
+    else:
+        arr[n][k] = (combination(n-1, k-1)+combination(n-1, k))%10007
+        return arr[n][k]
+
+
+n, k = tuple(map(int, input().split()))
+arr = [[-1 for i in range(1001)] for j in range(1001)]
+arr[0][0] = 1
+combination(n, k)
+print(arr[n][k])

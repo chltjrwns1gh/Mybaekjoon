@@ -1,0 +1,22 @@
+def solve(a_0, a_n):
+    while True:
+        min_num = check(a_0, a_n)
+        if min_num == -1:
+            return "{}/{}".format(a_0, a_n)
+        else:
+            a_0 //= min_num
+            a_n //= min_num
+
+
+def check(a, b):
+    primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 47, 53, 59]
+    for prime in primes:
+        if a % prime == 0 and b % prime == 0:
+            return prime
+    return -1
+
+
+n = int(input())
+arr = list(map(int, input().split()))
+for _ in range(n-1):
+    print(solve(arr[0], arr[_+1]))

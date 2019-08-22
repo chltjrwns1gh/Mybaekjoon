@@ -1,0 +1,52 @@
+def solve():
+    global cnt
+    global arr
+    row = len(arr)
+    column = len(arr[0])
+    for i in range(row):
+        for j in range(column):
+            if arr[i][j] == 1:
+                bfs(i, j)
+                cnt += 1
+                # print("cnt : {}".format(cnt))
+
+
+def bfs(x, y):
+    global arr
+    row = len(arr)
+    column = len(arr[0])
+    queue = list()
+    queue.append((x, y))
+    while len(queue) != 0:
+        x = queue[0][0]
+        y = queue[0][1]
+        queue = queue[1:]
+        arr[x][y] = 0
+        if 0 <= x+1 < row and 0 <= y < column:
+            if arr[x+1][y] == 1:
+                arr[x+1][y] = 0
+                queue.append((x+1, y))
+        if 0 <= x < row and 0 <= y+1 < column:
+            if arr[x][y+1] == 1:
+                arr[x][y+1] = 0
+                queue.append((x, y+1))
+        if 0 <= x-1 < row and 0 <= y < column:
+            if arr[x-1][y] == 1:
+                arr[x-1][y] = 0
+                queue.append((x-1, y))
+        if 0 <= x < row and 0 <= y-1 < column:
+            if arr[x][y-1] == 1:
+                arr[x][y-1] = 0
+                queue.append((x, y-1))
+
+
+t = int(input())
+for _ in range(t):
+    column, row, k = tuple(map(int, input().split()))
+    arr = [[0 for i in range(column)] for j in range(row)]
+    for __ in range(k):
+        a, b = tuple(map(int, input().split()))
+        arr[b][a] = 1
+    cnt = 0
+    solve()
+    print(cnt)

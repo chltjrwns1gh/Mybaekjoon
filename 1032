@@ -1,0 +1,14 @@
+n = int(input())
+dir_file_list = list()
+for i in range(n):
+    dir_file_list.append(input())
+
+ret = ''
+for idx_char in range(len(dir_file_list[0])):
+    for file_name in dir_file_list:
+        if dir_file_list[0][idx_char] != file_name[idx_char]:
+            ret += '?'
+            break
+    else:
+        ret += dir_file_list[0][idx_char]
+print(ret)

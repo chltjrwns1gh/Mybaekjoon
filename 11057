@@ -1,0 +1,8 @@
+n = int(input())
+arr = [[1 for i in range(10)]]
+for i in range(n-len(arr)):
+    a = [0 for kkk in range(10)]
+    for j in range(10):
+        a[j] = (sum(arr[-1][:j+1]))%10007
+    arr.append(a)
+print((sum(arr[n-1]))%10007)

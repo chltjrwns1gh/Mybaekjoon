@@ -1,0 +1,29 @@
+from math import sqrt
+
+
+def find_list_prime(num):
+    ret = [2]
+    for i in range(3, num+1):
+        if isprime(i, ret):
+            ret.append(i)
+    return ret
+
+
+def isprime(n, arr):
+    for prime in arr:
+        if n % prime == 0:
+            return False
+    return True
+
+
+t = int(input())
+primes = find_list_prime(100000)
+for _ in range(t):
+    n = int(input())
+    for prime in primes:
+        cnt = 0
+        while n % prime == 0:
+            n //= prime
+            cnt += 1
+        if cnt != 0:
+            print(prime, cnt)

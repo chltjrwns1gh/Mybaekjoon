@@ -1,0 +1,16 @@
+def solve(n, r, c):
+    if n == 0:
+        return 1
+    lesser_size = 2**(n-1)
+    if r < lesser_size and c < lesser_size:
+        return solve(n-1, r, c)
+    elif r < lesser_size <= c:
+        return 4**(n-1) + solve(n-1, r, c-2**(n-1))
+    elif r >= lesser_size > c:
+        return 2*4**(n-1) + solve(n-1, r-2**(n-1), c)
+    else:
+        return 3*4**(n-1) + solve(n-1, r-2**(n-1), c-2**(n-1))
+
+
+n, r, c = tuple(map(int, input().split()))
+print(solve(n, r, c)-1)

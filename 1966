@@ -1,0 +1,37 @@
+from collections import deque
+
+
+def is_print(now, queue, importance_list, length):
+    ret = True
+    for i in range(length):
+        cursor = queue.popleft()
+        queue.append(cursor)
+        if importance_list[now] < importance_list[cursor]:
+            ret = False
+    return ret
+
+
+t = int(input())
+for _ in range(t):
+    queue = deque()
+    n, m = tuple(map(int, input().split()))
+    for i in range(n):
+        queue.append(i)
+    length = n
+    importance_list = list(map(int, input().split()))
+    print_list = list()
+    cnt = 1
+
+    while length > 0:
+        now = queue.popleft()
+        queue.appendleft(now)
+        if is_print(now, queue, importance_list, length):
+            if now == m:
+                print(cnt)
+                break
+            print_list.append(now)
+            queue.popleft()
+            length -= 1
+            cnt += 1
+        else:
+            queue.append(queue.popleft())

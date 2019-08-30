@@ -1,0 +1,14 @@
+resistance = {'black':[0, 10**0],
+              'brown':[1, 10**1],
+              'red':[2, 10**2],
+              'orange':[3, 10**3],
+              'yellow':[4, 10**4],
+              'green':[5, 10**5],
+              'blue':[6, 10**6],
+              'violet':[7, 10**7],
+              'grey':[8, 10**8],
+              'white':[9, 10**9]}
+color = list()
+for _ in range(3):
+    color.append(input())
+print((resistance[color[0]][0]*10+resistance[color[1]][0])*resistance[color[2]][1])

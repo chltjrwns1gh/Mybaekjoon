@@ -1,0 +1,12 @@
+x, y = tuple(input().split())
+rev_x = 0
+rev_y = 0
+for i in range(len(x)):
+    rev_x += int(x[i])*(10**i)
+for i in range(len(y)):
+    rev_y += int(y[i])*(10**i)
+rev_xy = 0
+xy = str(rev_x+rev_y)
+for i in range(len(xy)):
+    rev_xy += int(xy[i])*(10**i)
+print(rev_xy)

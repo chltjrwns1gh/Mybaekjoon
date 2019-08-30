@@ -1,0 +1,34 @@
+def left(queue, step):
+    return queue[step:]+queue[:step]
+
+
+def right(queue, step):
+    return queue[len(queue)-step:]+queue[:len(queue)-step]
+
+
+def get_element(element_to_find, queue):
+    # print("want to find {} at {}".format(element_to_find, queue))
+    global cnt
+    # print("compare {} and {}".format(queue.index(element_to_find), len(queue)-queue.index(element_to_find)-1))
+    if queue.index(element_to_find) <= len(queue)-queue.index(element_to_find)-1:
+        # print("go left {} step".format(queue.index(element_to_find)))
+        cnt += queue.index(element_to_find)
+        queue = left(queue, queue.index(element_to_find))
+        return queue[1:]
+    else:
+        # print("go right {} step".format(len(queue)-queue.index(element_to_find)))
+        cnt += len(queue)-queue.index(element_to_find)
+        queue = right(queue, len(queue)-queue.index(element_to_find))
+        return queue[1:]
+
+
+n, m = tuple(map(int, input().split()))
+arr = list(map(int, input().split()))
+queue = list(range(1, n+1))
+cnt = 0
+# print(arr)
+for element_to_find in arr:
+    queue = get_element(element_to_find, queue)
+    # print(queue)
+    # print(cnt)
+print(cnt)

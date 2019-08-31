@@ -1,0 +1,23 @@
+def print_perfect(num, divisors):
+    print(n, '=', end=' ')
+    for divisor in divisors[:-1]:
+        print(divisor, end=' + ')
+    print(divisors[-1])
+
+
+def make_divisor(num):
+    ret = list()
+    for i in range(1, num):
+        if num % i == 0:
+            ret.append(i)
+    return ret
+
+
+n = int(input())
+while n != -1:
+    divisors = make_divisor(n)
+    if n == sum(divisors):
+        print_perfect(n, divisors)
+    else:
+        print("{} is NOT perfect.".format(n))
+    n = int(input())

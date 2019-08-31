@@ -1,0 +1,36 @@
+from collections import deque
+
+def balanced(prthss):
+    length = 0
+    stack = deque()
+    for i in prthss:
+        if i == '(' or i == '[':
+            stack.append(i)
+            length += 1
+        else:
+            length -= 1
+            if length < 0:
+                return False
+            if i == ']':
+                if stack.pop() != '[':
+                    return False
+            elif i == ')':
+                if stack.pop() != '(':
+                    return False
+    if length > 0:
+        return False
+    return True
+
+
+string = input()
+while string != '.':
+    parenthesis = ''
+    for i in string:
+        if i in ['[', ']', '(', ')']:
+            parenthesis += i
+    # print(parenthesis)
+    if balanced(parenthesis):
+        print("yes")
+    else:
+        print("no")
+    string = input()

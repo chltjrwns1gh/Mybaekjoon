@@ -1,0 +1,15 @@
+from collections import deque
+n, k = tuple(map(int, input().split()))
+length = n
+queue = deque()
+for i in range(1, n+1):
+    queue.append(i)
+
+result = '<'
+while length != 0:
+    for i in range(k-1):
+        queue.append(queue.popleft())
+    result += str(queue.popleft())+', '
+    length -= 1
+result = result[:-2] + '>'
+print(result)

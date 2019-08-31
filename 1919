@@ -1,0 +1,12 @@
+n = input()
+m = input()
+arr_n = [0 for i in range(26)]
+arr_m = [0 for i in range(26)]
+for i in n:
+    arr_n[ord(i)-ord('a')] += 1
+for i in m:
+    arr_m[ord(i)-ord('a')] += 1
+abs_dif = 0
+for i in range(26):
+    abs_dif += abs(arr_n[i]-arr_m[i])
+print(abs_dif)

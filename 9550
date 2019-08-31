@@ -1,0 +1,7 @@
+for _ in range(int(input())):
+    n, k = tuple(map(int, input().split()))
+    nums_candy = list(map(int, input().split()))
+    num_friend = 0
+    for num_candy in nums_candy:
+        num_friend += num_candy//k
+    print(num_friend)

@@ -1,0 +1,28 @@
+from collections import deque
+
+n = int(input())
+stack = deque()
+targets = list()
+for _ in range(n):
+    targets.append(int(input()))
+
+operation = list()
+available = True
+input_max = 0
+for target in targets:
+    while input_max < target:
+        operation.append("+")
+        stack.append(input_max+1)
+        input_max += 1
+
+    operation.append("-")
+    if stack.pop() != target:
+        available = False
+        break
+
+# print(available)
+if available:
+    for i in operation:
+        print(i)
+else:
+    print("NO")

@@ -1,0 +1,4 @@
+from math import sqrt
+diag, ratio_h, ratio_w = tuple(map(int, input().split()))
+k = sqrt((diag**2)/(ratio_h**2 + ratio_w**2))
+print(int(ratio_h*k), int(ratio_w*k))

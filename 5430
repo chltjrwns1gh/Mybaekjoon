@@ -1,0 +1,37 @@
+for _ in range(int(input())):
+    p = input()
+    n = int(input())
+    nums = input()[1:-1].split(',')
+    is_head = True
+    length = n
+    head = 0
+    tail = n-1
+    is_error = False
+
+    for operation in p:
+        if operation == 'D' and length == 0:
+            print("error")
+            is_error = True
+            break
+        elif operation == 'D':
+            if is_head:
+                head += 1
+            else:
+                tail -= 1
+            length -= 1
+        elif operation == 'R':
+            is_head = not is_head
+
+    if is_error:
+        continue
+    if nums[0] == '':
+        print("[]")
+        continue
+    nums = list(map(int, nums))
+    if is_head:
+        print(str(nums[head:tail+1]).replace(" ", ''))
+    else:
+        ret = list()
+        for kk in range(tail, head-1, -1):
+            ret.append(nums[kk])
+        print(str(ret).replace(' ', ''))

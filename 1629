@@ -1,0 +1,10 @@
+a, b, c = tuple(map(int, input().split()))
+square_a = [a]
+b = bin(b)[2:][::-1]
+for i in range(len(b)-1):
+    square_a.append((square_a[-1]*square_a[-1])%c)
+ret = 1
+for i in range(len(b)):
+    if b[i] == '1':
+        ret = (ret*square_a[i]) % c
+print(ret)

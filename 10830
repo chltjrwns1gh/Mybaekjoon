@@ -1,0 +1,31 @@
+def mul_mat(size, arr_1, arr_2):
+    ret_arr = [[0 for _ in range(size)] for __ in range(size)]
+    for i in range(size):
+        for j in range(size):
+            sum_ij = 0
+            for ind in range(size):
+                sum_ij += arr_1[i][ind]*arr_2[ind][j]
+            ret_arr[i][j] = sum_ij % 1000
+    return ret_arr
+
+
+n, b = tuple(map(int, input().split()))
+arr = list()
+for _ in range(n):
+    arr.append(list(map(int, input().split())))
+
+arr_square = [arr]
+b = bin(b)[2:][::-1]
+ret_mat = [[0 for i in range(n)] for j in range(n)]
+for i in range(n):
+    ret_mat[i][i] = 1
+for i in range(len(b)-1):
+    arr_square.append(mul_mat(n, arr_square[-1], arr_square[-1]))
+for i in range(len(b)):
+    if b[i] == '1':
+        ret_mat = mul_mat(n, ret_mat, arr_square[i])
+
+for i in range(n):
+    for j in range(n):
+        print(ret_mat[i][j], end=' ')
+    print()

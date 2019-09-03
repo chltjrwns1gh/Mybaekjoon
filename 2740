@@ -1,0 +1,21 @@
+n, m = tuple(map(int, input().split()))
+arr_1 = list()
+for _ in range(n):
+    arr_1.append(list(map(int, input().split())))
+m, k = tuple(map(int, input().split()))
+arr_2 = list()
+for _ in range(m):
+    arr_2.append(list(map(int, input().split())))
+
+ret_arr = [[0 for i in range(k)] for j in range(n)]
+for i in range(n):
+    for j in range(k):
+        sum = 0
+        for ind in range(m):
+            sum += arr_1[i][ind]*arr_2[ind][j]
+        ret_arr[i][j] = sum
+
+for i in range(n):
+    for j in range(k):
+        print(ret_arr[i][j], end=' ')
+    print()

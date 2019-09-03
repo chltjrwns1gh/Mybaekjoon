@@ -1,0 +1,72 @@
+def get_cnt(array, cnt_blue, cnt_white):
+    if check(array) == 'blue':
+        cnt_blue += 1
+    elif check(array) == 'white':
+        cnt_white += 1
+    else:
+        d_blue  = [0, 0, 0, 0]
+        d_white = [0, 0, 0, 0]
+        d_blue[0], d_white[0] = get_cnt(new_array(array, 4), cnt_blue, cnt_white)
+        d_blue[1], d_white[1] = get_cnt(new_array(array, 1), cnt_blue, cnt_white)
+        d_blue[2], d_white[2] = get_cnt(new_array(array, 3), cnt_blue, cnt_white)
+        d_blue[3], d_white[3] = get_cnt(new_array(array, 2), cnt_blue, cnt_white)
+        cnt_blue += sum(d_blue)
+        cnt_white += sum(d_white)
+
+    return cnt_blue, cnt_white
+
+
+def new_array(array, quad):
+    ret = list()
+    size_prev = len(array)
+    if quad == 1:
+        for i in range(size_prev//2):
+            ret_line = list()
+            for j in range(size_prev//2):
+                ret_line.append(array[i][j+size_prev//2])
+            ret.append(ret_line)
+    elif quad == 2:
+        for i in range(size_prev//2):
+            ret_line = list()
+            for j in range(size_prev//2):
+                ret_line.append(array[i+size_prev//2][j+size_prev//2])
+            ret.append(ret_line)
+    elif quad == 3:
+        for i in range(size_prev//2):
+            ret_line = list()
+            for j in range(size_prev//2):
+                ret_line.append(array[i+size_prev//2][j])
+            ret.append(ret_line)
+    elif quad == 4:
+        for i in range(size_prev//2):
+            ret_line = list()
+            for j in range(size_prev//2):
+                ret_line.append(array[i][j])
+            ret.append(ret_line)
+    return ret
+
+
+def check(array):
+    if all_same(array, 1):  # is all blue
+        return 'blue'
+    elif all_same(array, 0):  # is all white
+        return 'white'
+    else:
+        return None
+
+
+def all_same(array, num):
+    for i in range(len(array)):
+        for j in range(len(array[0])):
+            if array[i][j] != num:
+                return False
+    return True
+
+
+n = int(input())
+arr = list()
+for _ in range(n):
+    arr.append(list(map(int, input().split())))
+cnt_blue, cnt_white = get_cnt(arr, 0, 0)
+print(cnt_white)
+print(cnt_blue)

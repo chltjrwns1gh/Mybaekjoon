@@ -1,0 +1,29 @@
+def mul_mat(size_1, size_2, size_3, arr_1, arr_2):
+    # size_1 by size_2 * size_2 by size_3 = size_1 by size_3
+    # -----arr_1------ * -----arr_2------ = -----ret_arr----
+    ret_arr = [[0 for _ in range(size_3)] for __ in range(size_1)]
+    for i in range(size_1):
+        for j in range(size_3):
+            sum_ij = 0
+            for ind in range(size_2):
+                # print('i', i, 'j', j, 'ind', ind)
+                sum_ij += arr_1[i][ind]*arr_2[ind][j]
+            ret_arr[i][j] = sum_ij % 1000000
+    return ret_arr
+
+
+n = int(input())
+arr_square = [[[1, 1],
+               [1, 0]]]
+n = bin(n)[2:][::-1]
+ret_mat = [[1],
+           [0]]
+
+for i in range(len(n)-1):
+    arr_square.append(mul_mat(2, 2, 2, arr_square[-1], arr_square[-1]))
+# print()
+for i in range(len(n)):
+    if n[i] == '1':
+        ret_mat = mul_mat(2, 2, 1, arr_square[i], ret_mat)
+
+print(ret_mat[1][0])

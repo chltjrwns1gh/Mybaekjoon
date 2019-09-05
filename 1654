@@ -1,0 +1,23 @@
+def how_many_lines(lines, unit):
+    cnt = 0
+    for line in lines:
+        cnt += line // unit
+    return cnt
+
+
+k, n = tuple(map(int, input().split()))
+lines = list()
+for _ in range(k):
+    lines.append(int(input()))
+front = 1
+rear = (2**31)-1
+last_possible = -1
+while front <= rear:
+    mid = (front+rear)//2
+    # print(mid, last_possible)
+    if how_many_lines(lines, mid) >= n:
+        last_possible = mid
+        front = mid+1
+    elif how_many_lines(lines, mid) < n:
+        rear = mid-1
+print(last_possible)

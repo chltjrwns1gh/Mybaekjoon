@@ -1,0 +1,12 @@
+equation = input().split('-')
+res = 0
+if '+' in equation[0]:
+    res += sum(list(map(int, equation[0].split("+"))))
+else:
+    res += int(equation[0])
+for part_equation in equation[1:]:
+    if '+' in part_equation:
+        res -= sum(list(map(int, part_equation.split('+'))))
+    else:
+        res -= int(part_equation)
+print(res)

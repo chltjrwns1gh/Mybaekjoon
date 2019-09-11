@@ -1,0 +1,20 @@
+def is_answer_square(arr, len_max, i, j):
+    len_max -= 1
+    if arr[i][j] == arr[i+len_max][j] == arr[i][j+len_max] == arr[i+len_max][j+len_max]:
+        return True
+    return False
+
+
+n, m = tuple(map(int, input().split()))
+arr = list()
+for _ in range(n):
+    arr.append(input())
+len_max = max(n, m)
+while len_max > 1:
+    for i in range(n-len_max+1):
+        for j in range(m-len_max+1):
+            if is_answer_square(arr, len_max, i, j):
+                print(len_max**2)
+                exit()
+    len_max -= 1
+print(len_max**2)

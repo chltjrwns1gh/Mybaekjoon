@@ -1,0 +1,32 @@
+from collections import deque
+arr = list()
+for _ in range(int(input())):
+    arr.append(input())
+
+num_friends = [[] for i in range(len(arr))]
+
+for i in range(len(arr)):
+    queue = deque()
+    len_queue = 0
+    for idx in range(len(arr)):
+        if arr[i][idx] == 'Y':
+            queue.append(idx)
+            len_queue += 1
+            if idx not in num_friends[i]:
+                num_friends[i].append(idx)
+    while len_queue > 0:
+        friends_friend_idx = queue.popleft()
+        len_queue -= 1
+        for idx in range(len(arr)):
+            if arr[friends_friend_idx][idx] == 'Y':
+                if idx not in num_friends[i] and idx != i:
+                    num_friends[i].append(idx)
+
+max_friend = 0
+for num_friend in num_friends:
+    num_friend = list(set(num_friend))
+    if max_friend < len(num_friend):
+        max_friend = len(num_friend)
+
+# print(num_friends)
+print(max_friend)

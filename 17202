@@ -1,0 +1,13 @@
+a = list(map(int, input()))
+b = list(map(int, input()))
+mix_num = list()
+for _ in range(len(a)):
+    mix_num.append(a[_])
+    mix_num.append(b[_])
+
+for repeat in range(len(mix_num)-2):
+    new_mix_num = list()
+    for _ in range(len(mix_num)-1):
+        new_mix_num.append((mix_num[_]+mix_num[_+1])%10)
+    mix_num = new_mix_num[:]
+print(str(mix_num[0])+str(mix_num[1]))
